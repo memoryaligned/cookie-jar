@@ -1,0 +1,7 @@
+pandas
+jupyterlab
+python-dotenv
+matplotlib
+pyspark
+mkdocs
+flake8
