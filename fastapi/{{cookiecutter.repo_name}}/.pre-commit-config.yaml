@@ -3,28 +3,38 @@ repos:
     rev: 22.10.0
     hooks:
       - id: black
-        # exclude: ^venv/
+        exclude: ^alembic/
   - repo: https://github.com/pre-commit/mirrors-autopep8
     rev: v2.0.4
     hooks:
       - id: autopep8
+        exclude: ^alembic/
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.8.0
     hooks:
       - id: mypy
+        exclude: ^alembic/
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v3.1.0
     hooks:
       - id: add-trailing-comma
+        exclude: ^alembic/
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
     hooks:
       - id: check-yaml
+        exclude: ^alembic/
       - id: check-toml
+        exclude: ^alembic/
       - id: end-of-file-fixer
-      - id: trailing-whitespace
-        exclude: ^Makefile
+        exclude: ^alembic/
       - id: check-json
+        exclude: ^alembic/
       - id: pretty-format-json
+        exclude: ^alembic/
       - id: check-merge-conflict
+        exclude: ^alembic/
       - id: detect-private-key
+        exclude: ^alembic/
+      - id: end-of-file-fixer
+        exclude: ^alembic/
