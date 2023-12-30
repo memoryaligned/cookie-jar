@@ -6,7 +6,6 @@ and full software lifecycle support (automated build and code quality).
 ## todo
 
 - microservice built on Flask (synchronous)
-- microservice depends on RabbitMQ or AWS SQS
 
 ## ds
 
@@ -33,4 +32,13 @@ HTTP Microservice based on FastAPI (asynchronous) with alembic support.
 
 ```bash
 cookiecutter fastapi
+```
+
+## pymq
+
+MQ Microservice with support for SQS and eventually RabbitMQ with reasonable
+defaults.
+
+```bash
+cookiecutter pymq
 ```
