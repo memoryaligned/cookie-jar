@@ -1,5 +1,13 @@
 # Cookie Cutter projects
 
+Monorepo of cookiecutter templated projects that contain reasonable defaults
+and full software lifecycle support (automated build and code quality).
+
+## todo
+
+- microservice built on Flask (synchronous)
+- microservice depends on RabbitMQ or AWS SQS
+
 ## ds
 
 Data Science starter project incorporating best practices and ideas from my own
@@ -12,9 +20,17 @@ cookiecutter ds
 
 ## py
 
-Python starter project intended for use building generic python modules.  I
+Python starter project intended for use building generic python modules.
 expect to add three additional baselines later for:
 
-- microservice built on FastAPI (asynchronous)
-- microservice built on Flask (synchronous)
-- microservice depends on RabbitMQ or AWS SQS
+```bash
+cookiecutter py
+```
+
+## fastapi
+
+HTTP Microservice based on FastAPI (asynchronous) with alembic support.
+
+```bash
+cookiecutter fastapi
+```
