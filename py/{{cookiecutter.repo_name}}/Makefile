@@ -62,9 +62,13 @@ build_doc: requirements
 #################################################################################
 
 ## Build the project deliverables
-dist: build_doc
+dist: build_doc module
 	-mkdir dist
 	cd build && tar czf ../dist/docs.tar.gz docs
+
+## Build the module
+module:
+	$(PYTHON) -m build
 
 #################################################################################
 # Self Documenting Commands                                                     #
