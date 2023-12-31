@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements sync_package_to_repo docker module dist
+.PHONY: clean data lint requirements sync_package_to_repo
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -7,16 +7,14 @@
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PYTHON_REPO = {{ cookiecutter.python_repo }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
-PROJECT_VERSION = $(shell python -c "import src.{{cookiecutter.repo_name}} as p; print(p.__version__)")
 PYTHON = ./venv/bin/python3 
-DOCKER = /usr/bin/docker
 
 #################################################################################
 # COMMANDS                                                                      #
 #################################################################################
 
 ## Install Python Dependencies and set up the environment
-setup: requirements pre-commit alembic.ini
+setup: requirements pre-commit
 	@echo ""
 	@echo "###################################################################"
 	@echo "to source your environment to use it:"
@@ -59,27 +57,14 @@ serve_doc: requirements
 build_doc: requirements
 	$(PYTHON) -m mkdocs build
 
-alembic.ini:
-	$(PYTHON) -m alembic init alembic
-
 #################################################################################
 # PROJECT RULES                                                                 #
 #################################################################################
 
 ## Build the project deliverables
-dist: build_doc module docker
+dist: build_doc
 	-mkdir dist
 	cd build && tar czf ../dist/docs.tar.gz docs
-	$(DOCKER) image save $(PROJECT_NAME) | gzip -9 > dist/$(PROJECT_NAME)-docker-$(PROJECT_VERSION).tar.gz
-
-## Build the module
-module:
-	$(PYTHON) -m build
-
-
-## Build the docker image
-docker: 
-	$(DOCKER) build . -t $(PROJECT_NAME):$(PROJECT_VERSION)
 
 #################################################################################
 # Self Documenting Commands                                                     #
