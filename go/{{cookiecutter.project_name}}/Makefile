@@ -5,8 +5,6 @@
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-PYTHON = ./venv/bin/python3 
-DOCKER = /usr/bin/docker
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -14,6 +12,7 @@ DOCKER = /usr/bin/docker
 
 ## Set up the environment
 setup: go.mod
+	go install github.com/spf13/cobra-cli@latest
 
 # pre-commit: .git/hooks/pre-commit
 # 	@pre-commit install
@@ -36,7 +35,7 @@ clean:
 ## Build the project deliverables
 dist: go.mod cmd//{{cookiecutter.command_name}}/main.go
 	-mkdir dist
-	go build -o dist/{{cookiecutter.command_name}} cmd/{{cookiecutter.command_name}}/main.go 
+	go build -o dist/{{cookiecutter.command_name}} main.go
 
 
 #################################################################################
