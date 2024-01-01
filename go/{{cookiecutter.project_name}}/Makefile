@@ -12,7 +12,11 @@ PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 ## Set up the environment
 setup: go.mod
-	go install github.com/spf13/cobra-cli@latest
+	@echo ""
+	@echo "#####################################################################"
+	@echo " cobra-cli add <feature>"
+	@echo "#####################################################################"
+	@echo ""
 
 # pre-commit: .git/hooks/pre-commit
 # 	@pre-commit install
@@ -22,6 +26,8 @@ go.mod:
 	go mod init {{cookiecutter.module_name}}
 	go mod tidy
 	go get -u github.com/spf13/cobra@latest
+	go install github.com/spf13/cobra-cli@latest
+	cobra-cli init
 
 ## Clean the project temporary files
 clean:
@@ -33,7 +39,7 @@ clean:
 #################################################################################
 
 ## Build the project deliverables
-dist: go.mod cmd//{{cookiecutter.command_name}}/main.go
+dist: go.mod main.go cmd/root.go
 	-mkdir dist
 	go build -o dist/{{cookiecutter.command_name}} main.go
 
