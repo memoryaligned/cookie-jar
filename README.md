@@ -3,11 +3,23 @@
 Monorepo of cookiecutter templated projects that contain reasonable defaults
 and full software lifecycle support (automated build and code quality).
 
-## todo
+<!-- toc -->
 
-- microservice built on Flask (synchronous)
+- [Python](#python)
+  * [ds](#ds)
+  * [py](#py)
+  * [fastapi](#fastapi)
+  * [pymq](#pymq)
+  * [pylambda](#pylambda)
+- [Go Lang](#go-lang)
+  * [go](#go)
+  * [golambda](#golambda)
 
-## ds
+<!-- tocstop -->
+
+## Python
+
+### ds
 
 Data Science starter project incorporating best practices and ideas from my own
 experience and around github.  The idea is to just use this "and go" for my
@@ -17,7 +29,7 @@ work with reasonable defaults.
 cookiecutter ds
 ```
 
-## py
+### py
 
 Python starter project intended for use building generic python modules.
 expect to add three additional baselines later for:
@@ -26,7 +38,7 @@ expect to add three additional baselines later for:
 cookiecutter py
 ```
 
-## fastapi
+### fastapi
 
 HTTP Microservice based on FastAPI (asynchronous) with alembic support.
 
@@ -34,11 +46,37 @@ HTTP Microservice based on FastAPI (asynchronous) with alembic support.
 cookiecutter fastapi
 ```
 
-## pymq
+### pymq
 
 MQ Microservice with support for SQS and eventually RabbitMQ with reasonable
 defaults.
 
 ```bash
 cookiecutter pymq
+```
+
+### pylambda
+
+TODO: implement this
+
+```bash
+cookiecutter pylambda
+```
+
+## Go Lang
+
+### go
+
+Starter project intended for use building go command-line utilties
+
+```bash
+cookiecutter go
+```
+
+### golambda
+
+TODO: implement this
+
+```bash
+cookiecutter golambda
 ```
