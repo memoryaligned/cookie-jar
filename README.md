@@ -67,7 +67,7 @@ cookiecutter pylambda
 
 ### go
 
-Starter project intended for use building generic go lang modules.
+Starter project intended for use building go command-line utilties
 
 ```bash
 cookiecutter go
