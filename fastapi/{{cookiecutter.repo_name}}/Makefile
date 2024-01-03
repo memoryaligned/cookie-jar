@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements sync_package_to_repo docker module dist
+.PHONY: clean data lint requirements sync_package_to_repo docker module dist alembic start
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -41,6 +41,7 @@ requirements: venv
 clean:
 	@find . -type f -name "*.py[co]" -delete
 	@find . -type d -name "__pycache__" -delete
+	@find . -type d -name "*egg-info" -delete
 	@rm -rf ./build ./dist
 
 ## Run the linter against the scripts
@@ -76,10 +77,21 @@ dist: build_doc module docker
 module:
 	$(PYTHON) -m build
 
-
 ## Build the docker image
 docker: 
 	$(DOCKER) build . -t $(PROJECT_NAME):$(PROJECT_VERSION)
+
+## Make alembic revision
+alembic:
+	$(PYTHON)
+
+## Start the server
+start: requirements
+	@echo ""
+	@echo "###################################################################"
+	@echo " http://127.0.0.1:3000/docs"
+	@echo "###################################################################"
+	$(PYTHON) -m uvicorn --host 127.0.0.1 --port 3000 --workers 1 {{cookiecutter.repo_name}}.main:app
 
 #################################################################################
 # Self Documenting Commands                                                     #
