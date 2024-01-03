@@ -1,9 +1,9 @@
 {
-  "project_name": "project_name",
+  "project_name": "my_fast_api",
   "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+  "github_user": "your github user or organization name",
   "author_name": "Your name (or organization/company/team)",
   "description": "A short description of the project",
-  "github_user": "your github user or organization name",
   "license": "MIT",
   "python_repo": "url to your python repo"
 }
