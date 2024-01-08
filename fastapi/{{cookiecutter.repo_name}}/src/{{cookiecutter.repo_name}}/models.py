@@ -1,9 +1,6 @@
-from sqlalchemy import Column
-from sqlalchemy import Integer
-from sqlalchemy import String
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.types import Date
-from {{cookiecutter.repo_name}}.database import Base
-from {{cookiecutter.repo_name}}.database import engine
+from {{cookiecutter.repo_name}}.database import Base, engine
 
 
 class FirstDomainObject(Base):
