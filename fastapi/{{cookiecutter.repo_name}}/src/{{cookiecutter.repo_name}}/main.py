@@ -3,12 +3,9 @@ from datetime import date
 from typing import Any, Dict
 
 import {{cookiecutter.repo_name}}
-from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from {{cookiecutter.repo_name}}.database import SessionLocal
-
-load_dotenv()
 
 app = FastAPI(
     title="{{cookiecutter.repo_name}} API",
