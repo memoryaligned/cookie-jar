@@ -1,8 +1,18 @@
 # NOTES
 
-TODO:
+## To Get started
 
-- consider adding pyenv support with gitignore so it can't be checked in
+1. Create your environment and set the project up
+
+```bash
+make setup
+```
+
+2. edit your alembic.ini file to configure your project
+
+```bash
+vim ./alembic.ini
+```
 
 ## Database setup
 
