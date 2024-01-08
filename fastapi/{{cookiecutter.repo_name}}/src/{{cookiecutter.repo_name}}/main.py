@@ -1,12 +1,12 @@
 import time
 from datetime import date
-from typing import Dict
-from typing import Any
+from typing import Any, Dict
+
+import {{cookiecutter.repo_name}}
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from {{cookiecutter.repo_name}}.database import SessionLocal
-from dotenv import load_dotenv
-import {{cookiecutter.repo_name}}
 
 load_dotenv()
 
