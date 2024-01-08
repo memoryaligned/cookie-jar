@@ -1,9 +1,5 @@
 # NOTES
 
-TODO:
-
-- consider adding pyenv support with gitignore so it can't be checked in
-
 ## Database setup
 
 file: alembic.ini
