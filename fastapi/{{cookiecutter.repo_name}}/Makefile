@@ -61,7 +61,7 @@ build_doc: requirements
 	$(PYTHON) -m mkdocs build
 
 alembic.ini:
-	$(PYTHON) -m alembic init alembic
+	$(PYTHON) -m alembic init -t async alembic
 
 #################################################################################
 # PROJECT RULES                                                                 #
