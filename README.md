@@ -31,8 +31,7 @@ cookiecutter ds
 
 ### py
 
-Python starter project intended for use building generic python modules.
-expect to add three additional baselines later for:
+Python starter project intended for use building generic python modules.  Command line support comming soon!
 
 ```bash
 cookiecutter py
@@ -40,7 +39,7 @@ cookiecutter py
 
 ### fastapi
 
-HTTP Microservice based on FastAPI (asynchronous) with alembic support.
+HTTP Microservice based on FastAPI (asynchronous) with alembic support.  Command line support comming soon!
 
 ```bash
 cookiecutter fastapi
