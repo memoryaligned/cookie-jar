@@ -31,7 +31,8 @@ cookiecutter ds
 
 ### py
 
-Python starter project intended for use building generic python modules.  Command line support comming soon!
+Python starter project intended for use building generic python modules.
+Default command-line support includes sub-commands by default.
 
 ```bash
 cookiecutter py
@@ -39,7 +40,8 @@ cookiecutter py
 
 ### fastapi
 
-HTTP Microservice based on FastAPI (asynchronous) with alembic support.  Command line support comming soon!
+HTTP Microservice based on FastAPI (asynchronous) with alembic support.
+Includes command-line support for sub-command database operations by default.
 
 ```bash
 cookiecutter fastapi
