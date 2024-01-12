@@ -61,5 +61,5 @@ async def health_check():
 
 
 @app.get("/")
-def read_root() -> JSON_RESPONSE:
+async def read_root() -> JSON_RESPONSE:
     return {"Hello": "World"}
