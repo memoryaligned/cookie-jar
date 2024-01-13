@@ -91,7 +91,7 @@ start: requirements
 	@echo "###################################################################"
 	@echo " http://127.0.0.1:3000/docs"
 	@echo "###################################################################"
-	$(PYTHON) -m uvicorn --host 127.0.0.1 --port 3000 --workers 1 {{cookiecutter.repo_name}}.main:app
+	$(PYTHON) -m uvicorn --reload --host 127.0.0.1 --port 3000 --workers 1 {{cookiecutter.repo_name}}.main:app
 
 #################################################################################
 # Self Documenting Commands                                                     #
