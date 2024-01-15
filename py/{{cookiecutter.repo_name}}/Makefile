@@ -54,8 +54,12 @@ sync_package_to_repo:
 serve_doc: requirements
 	$(PYTHON) -m mkdocs serve
 
-build_doc: requirements
+serve_api_doc: requirements
+	$(PYTHON) -m http.server --bind 127.0.0.1 --directory build/apidoc/{{cookiecutter.repo_name}} 4545
+
+doc: requirements
 	$(PYTHON) -m mkdocs build
+	$(PYTHON) -m pdoc --html -o build/apidoc/ src/{{cookiecutter.repo_name}}
 
 #################################################################################
 # PROJECT RULES                                                                 #
