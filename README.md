@@ -13,7 +13,6 @@ and full software lifecycle support (automated build and code quality).
   * [pylambda](#pylambda)
 - [Go Lang](#go-lang)
   * [go](#go)
-  * [golambda](#golambda)
 
 <!-- tocstop -->
 
@@ -72,12 +71,4 @@ Starter project intended for use building go command-line utilties
 
 ```bash
 cookiecutter go
-```
-
-### golambda
-
-TODO: implement this
-
-```bash
-cookiecutter golambda
 ```
