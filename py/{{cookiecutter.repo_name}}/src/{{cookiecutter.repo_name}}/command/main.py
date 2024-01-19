@@ -1,6 +1,6 @@
 import argparse
 
-# from {{cookiecutter.repo_name}}.cmd.ACTION import callback_fn
+# from {{cookiecutter.repo_name}}.command.ACTION import callback_fn
 
 
 def _get_argparse():
