@@ -1,6 +1,6 @@
 import argparse
 
-from {{cookiecutter.repo_name}}.cmd.db import db_summary
+from {{cookiecutter.repo_name}}.command.db import db_summary
 
 
 def _get_argparse():
