@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements sync_package_to_repo docker module dist alembic start
+.PHONY: clean data lint requirements sync_package_to_repo docker module dist alembic start test
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -92,6 +92,10 @@ start: requirements
 	@echo " http://127.0.0.1:3000/docs"
 	@echo "###################################################################"
 	$(PYTHON) -m uvicorn --reload --host 127.0.0.1 --port 3000 --workers 1 {{cookiecutter.repo_name}}.main:app
+
+## Run the unit tests
+test:
+	$(PYTHON) -m pytest test/
 
 #################################################################################
 # Self Documenting Commands                                                     #
