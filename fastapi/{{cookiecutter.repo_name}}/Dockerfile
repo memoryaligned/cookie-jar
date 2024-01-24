@@ -19,6 +19,6 @@ RUN . "$HOME/.cargo/env" \
   && pip install *.whl
 
 EXPOSE 8080
-USER PYTHON
+USER python
 
-CMD ["uvicorn", "--workers", "1", "--log-level", "INFO", "--bind", "0.0.0.0:8080", "main:app"]
+CMD ["uvicorn", "--workers", "1", "--log-level", "info", "--host", "0.0.0.0", "--port", "8080", "{{cookiecutter.repo_name}}.main:app"]

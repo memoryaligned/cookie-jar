@@ -43,7 +43,7 @@ requirements: venv
 clean:
 	@find . -type f -name "*.py[co]" -delete
 	@find . -type d -name "__pycache__" -delete
-	@find . -type d -name "*egg-info" -delete
+	@-find . -type d -name "*egg-info" -exec rm -rf {} \;
 	@rm -rf ./build ./dist
 
 ## Run the linter against the scripts
@@ -70,17 +70,15 @@ alembic.ini:
 #################################################################################
 
 ## Build the project deliverables
-dist: build_doc module docker
+dist: build_doc docker dist/{{cookiecutter.repo_name}}-$(PROJECT_VERSION)-py3-none-any.whl
 	-mkdir dist
 	cd build && tar czf ../dist/docs.tar.gz docs
-	$(DOCKER) image save $(PROJECT_NAME) | gzip -9 > dist/$(PROJECT_NAME)-docker-$(PROJECT_VERSION).tar.gz
 
-## Build the module
-module:
+dist/{{cookiecutter.repo_name}}-$(PROJECT_VERSION)-py3-none-any.whl:
 	$(PYTHON) -m build
 
 ## Build the docker image
-docker: 
+docker: dist/{{cookiecutter.repo_name}}-$(PROJECT_VERSION)-py3-none-any.whl
 	$(DOCKER) build . -t $(PROJECT_NAME):$(PROJECT_VERSION)
 
 ## Make alembic revision
