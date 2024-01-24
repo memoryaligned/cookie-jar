@@ -1,2 +1,5 @@
-def db_summary():
-    return {"todo": "define a summary here"}
+import {{cookiecutter.repo_name}}.models
+
+
+def db_init():
+    {{cookiecutter.repo_name}}.models.db_init()

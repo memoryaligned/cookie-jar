@@ -21,6 +21,8 @@ setup: requirements pre-commit alembic.ini
 	@echo "###################################################################"
 	@echo "to source your environment to use it:"
 	@echo "  source ./venv/bin/activate"
+	@echo ""
+	@echo "set your database <USER> and <DBNAME> name in the .env file"
 	@echo "###################################################################"
 
 .git/hooks/pre-commit:
@@ -95,7 +97,10 @@ start: requirements
 
 ## Run the unit tests
 test:
-	$(PYTHON) -m pytest test/
+	$(PYTHON) -m pytest --cov={{cookiecutter.repo_name}} \
+		--cov-report=html:build/code-coverage-report \
+		--cov-report term-missing \
+		--cov-fail-under=50
 
 #################################################################################
 # Self Documenting Commands                                                     #

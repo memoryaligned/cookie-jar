@@ -1,6 +1,6 @@
 import argparse
 
-from {{cookiecutter.repo_name}}.command.db import db_summary
+from {{cookiecutter.repo_name}}.command.db import db_init
 
 
 def _get_argparse():
@@ -9,7 +9,7 @@ def _get_argparse():
 
     # first sub-command
     db_parser = subparsers.add_parser("db", help="DB commands")
-    db_parser.add_argument("-s", "--summary", action="store_true")
+    db_parser.add_argument("-i", "--init", action="store_true")
 
     args = parser.parse_args()
     return args
@@ -18,6 +18,5 @@ def _get_argparse():
 def main():
     args = _get_argparse()
 
-    if "summary" in args and args.summary:
-        summary = db_summary()
-        print(f"DB summary: {summary}")
+    if "init" in args:
+        db_init()
