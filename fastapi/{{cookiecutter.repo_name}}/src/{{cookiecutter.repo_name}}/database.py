@@ -11,19 +11,23 @@ except ImportError:
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-SQLALCHEMY_DATABASE_URL: str = os.getenv("SQLALCHEMY_DATABASE_URL", "")
-if (
-        SQLALCHEMY_DATABASE_URL == ""
-        or "<USER>" in SQLALCHEMY_DATABASE_URL
-        or "<DBNAME>" in SQLALCHEMY_DATABASE_URL
-):
-    logging.critical(
-        "SQLALCHEMY_DATABASE_URL environment variable not set correctly "
-        "in the .env file (or environment)"
-    )
-    sys.exit(1)
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+def init_session_local():
+    SQLALCHEMY_DATABASE_URL: str = os.getenv("SQLALCHEMY_DATABASE_URL", "")
+    if (
+            SQLALCHEMY_DATABASE_URL == ""
+            or "<USER>" in SQLALCHEMY_DATABASE_URL
+            or "<DBNAME>" in SQLALCHEMY_DATABASE_URL
+    ):
+        logging.critical(
+            "SQLALCHEMY_DATABASE_URL environment variable not set correctly "
+            "in the .env file (or environment)"
+        )
+        sys.exit(1)
+    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+    return sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+SessionLocal = init_session_local()
 
 Base = declarative_base()
