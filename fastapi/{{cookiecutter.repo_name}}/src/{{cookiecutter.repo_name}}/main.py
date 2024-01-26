@@ -6,43 +6,9 @@ import {{cookiecutter.repo_name}}
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from {{cookiecutter.repo_name}}.database import SessionLocal
+from {{cookiecutter.repo_name}}.services.app import init_app
 
-app = FastAPI(
-    title="{{cookiecutter.repo_name}} API",
-    summary="{{cookiecutter.description}}",
-    version={{cookiecutter.repo_name}}.__version__,
-)
-
-tags_metadata = [
-    {
-        "name": "operations",
-        "description": "Operations and site reliability engineering",
-    },
-    {
-        "name": "{{cookiecutter.repo_name}}",
-        "description": "{{cookiecutter.description}}",
-    },
-]
-
-origins = ["http://127.0.0.1:4200"]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-def get_db():
-    db = None
-    try:
-        db = SessionLocal()
-        yield db
-    finally:
-        if db:
-            db.close()
+app = init_app()
 
 
 START_TIME = time.time()
