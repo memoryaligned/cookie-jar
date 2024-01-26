@@ -1,19 +1,19 @@
-
 import contextlib
 from collections.abc import AsyncIterator
+from typing import Union
 
 from sqlalchemy.ext.asyncio import (AsyncConnection, AsyncEngine, AsyncSession,
                                     async_sessionmaker, create_async_engine)
 from sqlalchemy.orm import declarative_base
 
-Base = declarative_base
+Base = declarative_base()
 
 
 class DatabaseSessionManager:
 
     def __init__(self) -> None:
-        self._engine: AsyncEngine | None = None
-        self._sessionmaker: async_sessionmaker | None = None
+        self._engine: Union[AsyncEngine, None] = None
+        self._sessionmaker: Union[async_sessionmaker, None] = None
 
     def init(self, host: str) -> None:
         self._engine = create_async_engine(host)

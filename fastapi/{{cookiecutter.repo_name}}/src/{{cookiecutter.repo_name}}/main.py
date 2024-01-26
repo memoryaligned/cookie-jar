@@ -2,11 +2,8 @@ import time
 from datetime import date
 from typing import Any, Dict
 
-import {{cookiecutter.repo_name}}
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from {{cookiecutter.repo_name}}.database import SessionLocal
-from {{cookiecutter.repo_name}}.services.app import init_app
+from {{cookiecutter.repo_name}} import __version__ as version
+from {{cookiecutter.repo_name}}.app import init_app
 
 app = init_app()
 
@@ -22,7 +19,7 @@ async def health_check():
         "message": "OK",
         "uptime_seconds": round(time.time() - START_TIME, 2),
         "timestamp": date.fromtimestamp(time.time()),
-        "version": {{cookiecutter.repo_name}}.__version__,
+        "version": version
     }
 
 

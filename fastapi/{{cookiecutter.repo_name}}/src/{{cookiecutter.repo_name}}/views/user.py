@@ -1,3 +1,5 @@
+from typing import Union
+
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -8,7 +10,7 @@ router = APIRouter(prefix="/user", tags=["user"])
 
 
 class UserSchemaBase(BaseModel):
-    first: str | None = None
+    first: Union[str, None] = None
 
 
 class UserSchemaCreate(UserSchemaBase):
@@ -37,6 +39,9 @@ async def get_users(db: AsyncSession = Depends(get_db)):
 
 
 @router.post("/create-user", response_model=UserSchema)
-async def create_user(user: UserSchemaCreate, db: AsyncSession = Depends(get_db)):
-    user await UserModel.create(db, **user.dict())
+async def create_user(
+        user: UserSchemaCreate,
+        db: AsyncSession = Depends(get_db),
+):
+    user = await UserModel.create(db, **user.dict())
     return user

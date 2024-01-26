@@ -3,7 +3,7 @@ from uuid import uuid4
 from sqlalchemy import Column, String, select
 from sqlalchemy.exc import NoResultFound
 from sqlalchemy.ext.asyncio import AsyncSession
-from {{cookiecutter.repo_name}}.services.database import Base
+from {{cookiecutter.repo_name}}.services import Base
 
 
 class UserModel(Base):

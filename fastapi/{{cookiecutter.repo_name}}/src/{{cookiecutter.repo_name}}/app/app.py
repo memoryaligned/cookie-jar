@@ -1,13 +1,13 @@
 import logging
-import sys
 from contextlib import asynccontextmanager
 
+import {{cookiecutter.repo_name}}
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from {{cookiecutter.repo_name}}.services.database import (
-    get_db_connection_url, sessionmanager)
+from {{cookiecutter.repo_name}}.config import get_db_connection_url
+from {{cookiecutter.repo_name}}.services import sessionmanager
 
-logging = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 def init_app(init_db=True) -> FastAPI:
@@ -16,7 +16,8 @@ def init_app(init_db=True) -> FastAPI:
         db_url = get_db_connection_url()
         if not db_url:
             raise Exception(
-                "Database connection 'db_url' is not set unable to establish connection")
+                "Database connection 'db_url' is not set unable to establish connection",
+            )
         sessionmanager.init(db_url)
 
         @asynccontextmanager
@@ -33,7 +34,7 @@ def init_app(init_db=True) -> FastAPI:
 
     origins = ["http://127.0.0.1:4200"]
 
-    app.add_middleware(
+    server.add_middleware(
         CORSMiddleware,
         allow_origins=origins,
         allow_credentials=True,
