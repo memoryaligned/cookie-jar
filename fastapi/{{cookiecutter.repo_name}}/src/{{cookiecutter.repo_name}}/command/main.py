@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from {{cookiecutter.repo_name}}.command.db import db_init
+from {{cookiecutter.repo_name}}.services.database import db_init
 
 
 def _get_argparse(args):
