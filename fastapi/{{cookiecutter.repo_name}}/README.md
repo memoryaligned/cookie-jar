@@ -32,6 +32,8 @@ extra-index-url = https://REPO
 
 NOTE: don't forget to set the sqlalchemy_url in the alembic.ini file
 
+NOTE: don't forget to include your base model in the alembic/env.py file
+
 To create a new database schema revision:
 
 ```bash
