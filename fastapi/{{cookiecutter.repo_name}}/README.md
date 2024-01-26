@@ -27,3 +27,21 @@ file: ./venv/pip.conf
 [global]
 extra-index-url = https://REPO
 ```
+
+## Alembic
+
+NOTE: don't forget to set the sqlalchemy_url in the alembic.ini file
+
+NOTE: don't forget to include your base model in the alembic/env.py file
+
+To create a new database schema revision:
+
+```bash
+alembic revision --autogenerate -m "Adding [MODEL] model"
+```
+
+To apply proposed database schema changes (including dropping tables):
+
+```bash
+alembic upgrade head
+```

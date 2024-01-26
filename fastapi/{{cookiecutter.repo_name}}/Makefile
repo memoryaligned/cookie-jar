@@ -81,10 +81,6 @@ dist/{{cookiecutter.repo_name}}-$(PROJECT_VERSION)-py3-none-any.whl:
 docker: dist/{{cookiecutter.repo_name}}-$(PROJECT_VERSION)-py3-none-any.whl
 	$(DOCKER) build . -t $(PROJECT_NAME):$(PROJECT_VERSION)
 
-## Make alembic revision
-alembic:
-	$(PYTHON)
-
 ## Start the server
 start: requirements
 	@echo ""

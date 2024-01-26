@@ -2,47 +2,10 @@ import time
 from datetime import date
 from typing import Any, Dict
 
-import {{cookiecutter.repo_name}}
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from {{cookiecutter.repo_name}}.database import SessionLocal
+from {{cookiecutter.repo_name}} import __version__ as version
+from {{cookiecutter.repo_name}}.app import init_app
 
-app = FastAPI(
-    title="{{cookiecutter.repo_name}} API",
-    summary="{{cookiecutter.description}}",
-    version={{cookiecutter.repo_name}}.__version__,
-)
-
-tags_metadata = [
-    {
-        "name": "operations",
-        "description": "Operations and site reliability engineering",
-    },
-    {
-        "name": "{{cookiecutter.repo_name}}",
-        "description": "{{cookiecutter.description}}",
-    },
-]
-
-origins = ["http://127.0.0.1:4200"]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-def get_db():
-    db = None
-    try:
-        db = SessionLocal()
-        yield db
-    finally:
-        if db:
-            db.close()
+app = init_app()
 
 
 START_TIME = time.time()
@@ -56,7 +19,7 @@ async def health_check():
         "message": "OK",
         "uptime_seconds": round(time.time() - START_TIME, 2),
         "timestamp": date.fromtimestamp(time.time()),
-        "version": {{cookiecutter.repo_name}}.__version__,
+        "version": version
     }
 
 
