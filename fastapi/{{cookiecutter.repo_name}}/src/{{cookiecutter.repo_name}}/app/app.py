@@ -42,7 +42,8 @@ def init_app(init_db=True) -> FastAPI:
         allow_headers=["*"],
     )
 
-    from {{cookiecutter.repo_name}}.views.user import router as user_router
+    from {{cookiecutter.repo_name}}.controllers.user import \
+        router as user_router
     server.include_router(
         user_router,
         prefix="/api",
