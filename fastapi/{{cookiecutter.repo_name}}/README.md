@@ -34,6 +34,13 @@ NOTE: don't forget to set the sqlalchemy_url in the alembic.ini file
 
 NOTE: don't forget to include your base model in the alembic/env.py file
 
+```python
+from {{cookiecutter.repo_name}}.models import *
+from {{cookiecutter.repo_name}}.services import Base
+
+target_metadata = Base.metadata
+```
+
 To create a new database schema revision:
 
 ```bash
