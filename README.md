@@ -56,6 +56,8 @@ make setup
 vim .env
 ```
 
+![FastAPI cookiecutter speed run](https://github.com/memoryaligned/memoryaligned/blob/main/images/fastapi_speedrun.gif)
+
 ### pymq
 
 MQ Microservice with support for SQS and eventually RabbitMQ with reasonable
