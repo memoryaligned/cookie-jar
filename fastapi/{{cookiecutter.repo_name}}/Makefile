@@ -23,6 +23,8 @@ setup: requirements pre-commit alembic.ini
 	@echo "  source ./venv/bin/activate"
 	@echo ""
 	@echo "set your database <USER> and <DBNAME> name in the .env file"
+	@echo "edit the alembic.ini file (DB connection string) and alembic/env.py"
+	@echo "to add your models and Base.metadata per the README.md instructions"
 	@echo "###################################################################"
 
 .git/hooks/pre-commit:
