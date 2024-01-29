@@ -42,10 +42,14 @@ def init_app(init_db=True) -> FastAPI:
         allow_headers=["*"],
     )
 
-    from {{cookiecutter.repo_name}}.controllers.user import \
-        router as user_router
+    from {{cookiecutter.repo_name}}.controllers import ops_router, user_router
     server.include_router(
         user_router,
+        prefix="/api",
+    )
+
+    server.include_router(
+        ops_router,
         prefix="/api",
     )
 
