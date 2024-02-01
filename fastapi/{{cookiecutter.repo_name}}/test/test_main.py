@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from fastapi.testclient import TestClient
 from {{cookiecutter.repo_name}}.app import init_app
 
 

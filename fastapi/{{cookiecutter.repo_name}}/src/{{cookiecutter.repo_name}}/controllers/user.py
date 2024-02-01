@@ -22,7 +22,7 @@ class UserSchema(UserSchemaBase):
     created_at: str
     updated_at: str
 
-    class Config:
+    class ConfigDict:
         orm_model = True
 
 
