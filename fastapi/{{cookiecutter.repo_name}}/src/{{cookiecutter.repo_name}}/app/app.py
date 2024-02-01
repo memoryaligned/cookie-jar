@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 
 
 def init_app(init_db=True) -> FastAPI:
-    lifespan = None
     if init_db:
         db_url = get_db_connection_url()
         if not db_url:
