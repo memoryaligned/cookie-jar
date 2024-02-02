@@ -7,7 +7,7 @@
 ```bash
 make docker
 docker run -p 8080:8080 \
-           -e SQLALCHEMY_DATABASE_URL=postgresql://<USER>@127.0.0.1:5432/<DBNAME>
+-e SQLALCHEMY_DATABASE_URL=postgresql+asyncpg://<USER>@127.0.0.1:5432/<DBNAME>
            [name]:[tag]
 ```
 
