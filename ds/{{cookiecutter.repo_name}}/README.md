@@ -1,9 +1,11 @@
-{{cookiecutter.project_name}}
+# {{cookiecutter.project_name}}
+
 ==============================
 
 {{cookiecutter.description}}
 
-Project Organization
+## Project Organization
+
 ------------
 
     ├── LICENSE
@@ -51,7 +53,36 @@ Project Organization
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
-
 --------
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+## PySpark Quickstart
+
+```python
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructTypem, StructField, StringType
+
+spark = (SparkSession
+    .builder
+    .appName("MyApp")
+    .getOrCreate()
+)
+
+schema = StructType([
+    StructField(name="col1", datatype=StringType(), nullable=True, metadata=None),
+    ...
+])
+
+data = "../data/raw/dataset.csv"
+df = (spark
+    .read
+    .format("csv")
+    .options(
+        header=True,
+        encoding="utf8",
+        schema=schema,
+    )
+    .load(data)
+)
+```
