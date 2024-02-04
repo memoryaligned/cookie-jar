@@ -61,7 +61,7 @@
 
 ```python
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructTypem, StructField, StringType
+from pyspark.sql.types import StructType, StructField, StringType
 
 spark = (SparkSession
     .builder
@@ -85,4 +85,8 @@ df = (spark
     )
     .load(data)
 )
+
+df.createOrReplaceTempView("data")
+
+spark.sql("SELECT industry, value FROM data")
 ```
