@@ -2,6 +2,9 @@
 
 ==============================
 
+TODO: provide guidance on using XGBoost with PySpark
+[https://xgboost.readthedocs.io/en/stable/tutorials/spark_estimator.html](https://xgboost.readthedocs.io/en/stable/tutorials/spark_estimator.html)
+
 {{cookiecutter.description}}
 
 ## Project Organization
