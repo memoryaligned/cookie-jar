@@ -69,6 +69,9 @@ from pyspark.sql.types import StructType, StructField, StringType
 spark = (SparkSession
     .builder
     .appName("MyApp")
+    .config("spark.executor.memory", "8g")
+    .config("spark.executor.pyspark.memory", "8g")
+    .config("spark.driver.memory", "16g")
     .getOrCreate()
 )
 
@@ -88,8 +91,40 @@ df = (spark
     )
     .load(data)
 )
+df.withColumn("value", df["value"].cast("double"))
 
 df.createOrReplaceTempView("data")
-
 spark.sql("SELECT industry, value FROM data")
+
+target_col = "value"
+
+## Categorical Variables
+cat_cols = ["col1", "col2"]
+cat_cols_out = [col + "_idx" for col in cat_cols]
+
+categorical = []
+for i in range(len(cat_cols)):
+    categorical.append(
+        StringIndexer(inputCol=cat_cols[i], outputCol=cat_cols_out[i])
+    )
+
+## Encoding
+one_hot_col_out = [col + "_enc" for col in cat_cols_out]
+one_hot = OneHotEncoder(inputCols=cat_cols_out, outputCols=one_hot_col_out)
+
+## Assembler
+assembler = VectorAssembler(inputCols=one_hot_col_out, outputCol="features")
+
+## Feature Engineering
+feat_pipeline = Pipeline(stages=categorical + [one_hot, assembler])
+feat_df = feat_pipeline.fit(df).transform(df).select("features", target_col)
+feat_df.show(3)
+
+## Train/Test split
+train_df, test_df = feat_df.randomSplit([0.7, 0.3], seed=42).repartition(48)
+
+## Cross-Fold Validation
+ml = RandomForestRegressor(labelCol=target_col, featuresCol="features", seed=42)
+
+TODO: fill this in
 ```
