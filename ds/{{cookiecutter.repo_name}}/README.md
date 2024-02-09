@@ -126,5 +126,29 @@ train_df, test_df = feat_df.randomSplit([0.7, 0.3], seed=42).repartition(48)
 ## Cross-Fold Validation
 ml = RandomForestRegressor(labelCol=target_col, featuresCol="features", seed=42)
 
-TODO: fill this in
+param_grid = (ParamGridBuilder()
+    .addGrid(ml.maxBins, [2,3,4,5,6])
+    .addGrid(ml.maxDepth, [1,2,4,6,8,10,12,14,16,18.20,22,24,26,28,30])
+    .addGrid(ml.minInstancesPerNode, [1,2,3])
+    .addGrid(ml.numTrees, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
+)
+
+evaluator = RegressionEvaluator(
+    predictionCol=target_col,
+    labelCol="prediction",
+    metricName="rmse",
+)
+
+crossval = CrossValidator(
+    estimator=Pipeline(stages=[ml]),
+    estimatorParamMaps=param_grid,
+    evaluator=evaluator,
+    numFolds=5,
+)
+
+cv_model = crossval.fit(train_df)
+cv_model.bestModel.explainParams()
+cv_model.bestModel.extractParamMap()
+cv_model.bestModel.params
+cv_model.bestModel.featureImportances
 ```
