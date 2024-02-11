@@ -117,7 +117,9 @@ assembler = VectorAssembler(inputCols=one_hot_col_out, outputCol="features")
 
 ## Feature Engineering
 feat_pipeline = Pipeline(stages=categorical + [one_hot, assembler])
-feat_df = feat_pipeline.fit(df).transform(df).select("features", target_col)
+feat_pipeline_model = feat_pipeline.fit(df)
+feat_pipeline_model.save("../models/feat_pipeline.model")
+feat_df = feat_pipeline_model.transform(df).select("features", target_col)
 feat_df.show(3)
 
 ## Train/Test split
@@ -147,6 +149,7 @@ crossval = CrossValidator(
 )
 
 cv_model = crossval.fit(train_df)
+cv_model.bestModel.save("../models/opt_rand_forest_pipeline.model")
 cv_model.bestModel.explainParams()
 cv_model.bestModel.extractParamMap()
 cv_model.bestModel.params
