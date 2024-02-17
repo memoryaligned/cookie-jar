@@ -10,6 +10,7 @@ PROJECT_NAME = {{ cookiecutter.repo_name }}
 PROJECT_VERSION = $(shell python -c "import src.{{cookiecutter.repo_name}} as p; print(p.__version__)")
 PYTHON = ./venv/bin/python3 
 DOCKER = /usr/bin/docker
+PRE_COMMIT = ./venv/bin/pre-commit
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -31,8 +32,8 @@ setup: requirements pre-commit alembic.ini
 	@git init .
 
 pre-commit: .git/hooks/pre-commit
-	@pre-commit install
-	@pre-commit
+	@$(PRE_COMMIT) install
+	@$(PRE_COMMIT)
 
 venv:
 	python3 -m venv venv
