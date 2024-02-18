@@ -5,7 +5,7 @@ from {{cookiecutter.repo_name}}.app import init_app
 
 
 def test_init_app():
-    app = init_app()
+    app = init_app(False)
     assert isinstance(app, FastAPI)
 
 
