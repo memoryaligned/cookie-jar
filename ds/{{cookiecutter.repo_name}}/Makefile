@@ -18,8 +18,8 @@ PYTHON = ./venv/bin/python3
 setup: requirements
 	@echo ""
 	@echo "###################################################################"
-	@echo "to source your environment to use it:"
 	@echo "  source ./venv/bin/activate"
+	@echo "  mise use java@17.0.2"
 	@echo "###################################################################"
 
 venv:
