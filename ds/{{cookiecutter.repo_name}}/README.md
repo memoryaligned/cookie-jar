@@ -5,6 +5,12 @@
 TODO: provide guidance on using XGBoost with PySpark
 [https://xgboost.readthedocs.io/en/stable/tutorials/spark_estimator.html](https://xgboost.readthedocs.io/en/stable/tutorials/spark_estimator.html)
 
+TODO: provide guidance on yellowbrick
+[https://www.scikit-yb.org/en/latest/](https://www.scikit-yb.org/en/latest/)
+
+TODO: provide guidance on tslearn
+[https://github.com/tslearn-team/tslearn](https://github.com/tslearn-team/tslearn)
+
 {{cookiecutter.description}}
 
 ## Project Organization
@@ -76,18 +82,18 @@ spark = (SparkSession
 )
 
 schema = StructType([
-    StructField(name="col1", datatype=StringType(), nullable=True, metadata=None),
+    StructField(name="col1", dataType=StringType(), nullable=True, metadata=None),
     ...
 ])
 
 data = "../data/raw/dataset.csv"
 df = (spark
     .read
+    .schema(schema)
     .format("csv")
     .options(
         header=True,
         encoding="utf8",
-        schema=schema,
     )
     .load(data)
 )

@@ -6,3 +6,6 @@ pyspark==3.2.3
 mkdocs
 flake8
 xgboost
+matplotlib
+yellowbrick
+tslearn
