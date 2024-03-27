@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements sync_package_to_repo docker module dist alembic start
+.PHONY: clean data lint requirements sync_package_to_repo docker module dist alembic start test
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -10,6 +10,7 @@ PROJECT_NAME = {{ cookiecutter.repo_name }}
 PROJECT_VERSION = $(shell python -c "import src.{{cookiecutter.repo_name}} as p; print(p.__version__)")
 PYTHON = ./venv/bin/python3 
 DOCKER = /usr/bin/docker
+PRE_COMMIT = ./venv/bin/pre-commit
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -21,14 +22,18 @@ setup: requirements pre-commit alembic.ini
 	@echo "###################################################################"
 	@echo "to source your environment to use it:"
 	@echo "  source ./venv/bin/activate"
+	@echo ""
+	@echo "set your database <USER> and <DBNAME> name in the .env file"
+	@echo "edit the alembic.ini file (DB connection string) and alembic/env.py"
+	@echo "to add your models and Base.metadata per the README.md instructions"
 	@echo "###################################################################"
 
 .git/hooks/pre-commit:
 	@git init .
 
 pre-commit: .git/hooks/pre-commit
-	@pre-commit install
-	@pre-commit
+	@$(PRE_COMMIT) install
+	@$(PRE_COMMIT)
 
 venv:
 	python3 -m venv venv
@@ -41,7 +46,7 @@ requirements: venv
 clean:
 	@find . -type f -name "*.py[co]" -delete
 	@find . -type d -name "__pycache__" -delete
-	@find . -type d -name "*egg-info" -delete
+	@-find . -type d -name "*egg-info" -exec rm -rf {} \;
 	@rm -rf ./build ./dist
 
 ## Run the linter against the scripts
@@ -68,22 +73,16 @@ alembic.ini:
 #################################################################################
 
 ## Build the project deliverables
-dist: build_doc module docker
+dist: build_doc docker dist/{{cookiecutter.repo_name}}-$(PROJECT_VERSION)-py3-none-any.whl
 	-mkdir dist
 	cd build && tar czf ../dist/docs.tar.gz docs
-	$(DOCKER) image save $(PROJECT_NAME) | gzip -9 > dist/$(PROJECT_NAME)-docker-$(PROJECT_VERSION).tar.gz
 
-## Build the module
-module:
+dist/{{cookiecutter.repo_name}}-$(PROJECT_VERSION)-py3-none-any.whl:
 	$(PYTHON) -m build
 
 ## Build the docker image
-docker: 
+docker: dist/{{cookiecutter.repo_name}}-$(PROJECT_VERSION)-py3-none-any.whl
 	$(DOCKER) build . -t $(PROJECT_NAME):$(PROJECT_VERSION)
-
-## Make alembic revision
-alembic:
-	$(PYTHON)
 
 ## Start the server
 start: requirements
@@ -92,6 +91,13 @@ start: requirements
 	@echo " http://127.0.0.1:3000/docs"
 	@echo "###################################################################"
 	$(PYTHON) -m uvicorn --reload --host 127.0.0.1 --port 3000 --workers 1 {{cookiecutter.repo_name}}.main:app
+
+## Run the unit tests
+test:
+	$(PYTHON) -m pytest --cov={{cookiecutter.repo_name}} \
+		--cov-report=html:build/code-coverage-report \
+		--cov-report term-missing \
+		--cov-fail-under=50
 
 #################################################################################
 # Self Documenting Commands                                                     #

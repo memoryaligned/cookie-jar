@@ -2,7 +2,7 @@ pandas
 jupyterlab
 python-dotenv
 matplotlib
-pyspark
+pyspark==3.2.3
 mkdocs
 flake8
 openpyxl

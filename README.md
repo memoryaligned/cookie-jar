@@ -39,12 +39,24 @@ cookiecutter py
 
 ### fastapi
 
-HTTP Microservice based on FastAPI (asynchronous) with alembic support.
-Includes command-line support for sub-command database operations by default.
+HTTP Microservice based on [FastAPI](https://fastapi.tiangolo.com/) (asynchronous) with alembic support.
+Includes [command-line support](https://docs.python.org/3/library/argparse.html) for sub-command database operations by default.
+
+By default this project:
+- installs [git hooks](https://pre-commit.com/hooks.html) to automatically format/check code, types, and pep8 style
+- supports environment variables in [.env](https://pypi.org/project/python-dotenv/#getting-started) for rapid development
+- runs a [code coverage](https://pytest-cov.readthedocs.io/en/latest/readme.html#usage) report with lines missing test coverage
+- builds a HTML code coverage report
+- [Docker](https://docs.docker.com/engine/reference/builder/) support out of the box
 
 ```bash
 cookiecutter fastapi
+cd [your project name]
+make setup
+vim .env
 ```
+
+![FastAPI cookiecutter speed run](https://github.com/memoryaligned/memoryaligned/blob/main/images/fastapi_speedrun.gif)
 
 ### pymq
 
