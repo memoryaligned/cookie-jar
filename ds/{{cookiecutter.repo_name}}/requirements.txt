@@ -5,7 +5,12 @@ matplotlib
 pyspark==3.2.3
 mkdocs
 flake8
-xgboost
-matplotlib
-yellowbrick
+openpyxl
+xlrd
+lxml
 tslearn
+yellowbrick
+xgboost
+scikit-learn
+pylightxl
+shap
