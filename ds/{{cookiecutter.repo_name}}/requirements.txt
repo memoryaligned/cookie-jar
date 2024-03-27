@@ -5,3 +5,12 @@ matplotlib
 pyspark
 mkdocs
 flake8
+openpyxl
+xlrd
+lxml
+tslearn
+yellowbrick
+xgboost
+scikit-learn
+pylightxl
+shap
