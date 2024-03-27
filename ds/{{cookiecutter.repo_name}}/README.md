@@ -11,6 +11,9 @@ TODO: provide guidance on yellowbrick
 TODO: provide guidance on tslearn
 [https://github.com/tslearn-team/tslearn](https://github.com/tslearn-team/tslearn)
 
+TODO: provide guidance on shap
+[https://shap.readthedocs.io/en/latest/index.html](https://shap.readthedocs.io/en/latest/index.html)
+
 {{cookiecutter.description}}
 
 ## Project Organization
