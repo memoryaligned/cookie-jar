@@ -14,3 +14,4 @@ tslearn
 xgboost
 xlrd
 yellowbrick
+sphinx
