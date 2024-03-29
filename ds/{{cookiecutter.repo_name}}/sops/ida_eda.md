@@ -61,6 +61,15 @@ for n, t in zip(df.dtypes.index, df.dtypes.values):
       print(f"   '{n}': np.{t},")
 ```
 
+### Cardinality Counts
+
+```python
+for c in df.columns:
+   print(c, end="")
+   print(df[c].fillna("").value_counts().sort_values(ascending=False)[:5]
+   print()
+```
+
 ### Date Handling
 
 - impute missing values
