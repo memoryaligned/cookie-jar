@@ -12,6 +12,13 @@ Examples:
 - ethnicity
 - eye color
 
+Properites of numerical data:
+
+- no natural order
+- categories are mutually exclusive
+- only counts can be calculated
+- mode is the only measure of central tendancy
+
 ## Ordinal
 
 Categories with a meaningful order or rank where the difference between values
@@ -22,6 +29,10 @@ Examples:
 
 - movie ratings (1 star, 2 stars, etc)
 
+Properties of ordinal data:
+
+- natural order exists
+- differences between values cannot be precisely evaluated
 
 ## Interval
 
@@ -30,6 +41,13 @@ Has equal intervals between values but no true zero point with a natural order.
 Examples:
 
 - temperature in Celsius or Fahrenheit
+
+Properties of interval data:
+
+- natural order exists
+- differences between values can be evaluated
+- no meaningful ratio exists (e.g., 20 degrees celcius is not twice as hot as
+  10 degrees celcius)
 
 ## Ratio data
 
@@ -41,3 +59,9 @@ Examples:
 - weight
 - time
 - money
+
+Properties of ratio data:
+
+- natural order exists
+- differences and ratios are meaningful
+- true zero point (e.g., zero weight means absence of weight)
