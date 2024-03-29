@@ -53,11 +53,13 @@ We are done when:
 Set the schema via parse_dates=[4], "dtype" and "converters"
 
 ```python
-schema_vendor_v1 = {
-   'COL1': np.float64,
-   'COL2': np.int64,
-   'COL3': np.object,
-}
+print("schema_VENDOR_OBJECT_v1 = {")
+for n, t in zip(df.dtypes.index, df.dtypes.values):
+   if t == "bool" or t == "object":
+      print(f"   '{n}': {t},")
+   else:
+      print(f"   '{n}': np.{t},")
+```
 
 ### Date Handling
 
