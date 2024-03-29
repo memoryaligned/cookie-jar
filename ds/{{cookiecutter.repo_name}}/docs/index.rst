@@ -10,9 +10,9 @@
    :maxdepth: 2
    :caption: Contents:
 
-stat_initial_data_analysis
-stat_exploratory_data_analysis
-stat_modeling_data_analysis
+   stat_initial_data_analysis
+   stat_exploratory_data_analysis
+   stat_modeling_data_analysis
 
 
 Indices and tables
