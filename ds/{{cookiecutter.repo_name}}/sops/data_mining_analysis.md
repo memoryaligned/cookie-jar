@@ -75,8 +75,9 @@ def get_mandatory_columns(percent, my_df):
    columns = list(cdf[ cdf[value_column] > 0]["index"])
    return columns
 
-for i in range(K):
-   print(i, sorted(get_mandatory_columns(0, df[ df["cluster"] == i].drop("cluster", axis=1))))
+# old method
+#for i in range(K):
+#   print(i, sorted(get_mandatory_columns(0, df[ df["cluster"] == i].drop("cluster", axis=1))))
 ```
 
 ## Build a set of columns
@@ -85,6 +86,8 @@ for i in range(K):
 all_columns = set([])
 for c in record_types:
    [all_columns.add(r) for r in c]
+group_df = pd.DataFrame(vdf, columns=sorted(list(all_columns)))
+group_df.T.style.apply(lambda x: ["background: gray" if v == 0 else "" for v in x], axis=1)
 ```
 
 ## Group Membership
