@@ -40,6 +40,7 @@ Has equal intervals between values but no true zero point with a natural order.
 
 Examples:
 
+- dates (no true zero point; we cannot do meaningful ratios)
 - temperature in Celsius or Fahrenheit
 
 Properties of interval data:
