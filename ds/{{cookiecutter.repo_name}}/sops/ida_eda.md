@@ -65,7 +65,6 @@ for n, t in zip(df.dtypes.index, df.dtypes.values):
 
 ```python
 for c in df.columns:
-   print(c, end="")
    print(df[c].fillna("").value_counts().sort_values(ascending=False)[:5]
    print()
 ```
