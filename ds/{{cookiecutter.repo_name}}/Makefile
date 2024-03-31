@@ -45,10 +45,10 @@ sync_data_to_s3:
 
 ## Serve the documentation locally
 serve_doc: requirements
-	$(PYTHON) -m mkdocs serve
+	(cd docs/_build/html/; ../../../venv/bin/python3 -m http.server -b localhost; )
 
 build_doc: requirements
-	$(PYTHON) -m mkdocs build
+	(cd docs/; SPHINXBUILD=../venv/bin/sphinx-build make html)
 
 #################################################################################
 # PROJECT RULES                                                                 #
