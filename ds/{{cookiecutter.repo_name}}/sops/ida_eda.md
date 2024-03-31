@@ -83,6 +83,8 @@ df.isnull().any()
 
 ### Value Counts
 
+TODO: put in code you used for Series index/data
+
 ```python
 df.apply( pd.value_counts )
 
@@ -98,9 +100,11 @@ types, nominal, ordinal, interval and ratio.
 
 ```python
 null_col = []
+features_col = []
+target_col = []
 
 nominal_col = []
-oridnal_col = []
+ordinal_col = []
 interval_col = []
 ratio_col = []
 ```
@@ -121,8 +125,29 @@ df.corr()['Target'][:].sort_values(ascending=False)
 pd.plotting.scatter_matrix(df[feature_ratio], alpha=0.2, diagnal='hist', figsize(12,18))
 ```
 
-## 4. Cleaning, investigation, matching and formatting
+## 4. Normalizing/standardizing  and cleaning data
 
 NOTE: Chapter 7: Wrangling with Python
 
+- TODO: reshaping and pivoting
+- TODO: data transformation
+- TODO: joining/merging datasets
 
+NOTE: Chapter 8 Data Wrangling with Python
+
+- TODO: scripting data cleanup
+- TODO: testing data cleanup
+- TODO: saving "normalized" and "standardized" data
+
+## 5. Exploratory Data Analysis (John Tukey's Approach)
+
+Summarize and visualize main characteristics
+
+- Historgram (see data distribution)
+
+```python
+df[features].hist(bins=50, figsize=(12,12))
+plt.show()
+```
+
+- Frequency counts
