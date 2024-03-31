@@ -90,3 +90,39 @@ df.apply( pd.value_counts )
 
 df.col1.value_counts()
 ```
+
+## 2. Classify columns into NOIR for further analysis
+
+We are done when we have classified data into statistical
+types, nominal, ordinal, interval and ratio.
+
+```python
+null_col = []
+
+nominal_col = []
+oridnal_col = []
+interval_col = []
+ratio_col = []
+```
+
+## 3. Identify  features for Transformation
+
+- categorical variables must be encoded (is there a natural order)?
+- pearson correlation coefficient:
+
+```python
+df.corr()['Target'][:].sort_values(ascending=False)
+```
+
+- visualize:
+
+```python
+# visualize correlation between a column and the target
+pd.plotting.scatter_matrix(df[feature_ratio], alpha=0.2, diagnal='hist', figsize(12,18))
+```
+
+## 4. Cleaning, investigation, matching and formatting
+
+NOTE: Chapter 7: Wrangling with Python
+
+
