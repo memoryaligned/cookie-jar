@@ -65,6 +65,7 @@ Set the schema via parse_dates=[4], "dtype" and "converters"
 pd.read_csv(
    "myfile.csv",
    dtype = {"col1": "int"},
+   parse_dates = ["coldt", "coldt2"],
    converters={"col1", convert_currency, "col2": pd.to_numeric(x, errors="coerce")}
 )
 ```
