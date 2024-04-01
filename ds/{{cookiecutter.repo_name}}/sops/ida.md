@@ -165,9 +165,10 @@ We are done when we have classified data into statistical
 types, nominal, ordinal, interval and ratio.
 
 ```python
+keyh_col = []
 null_col = []
-features_col = []
-target_col = []
+#features_col = []  move to EDA
+#target_col = []    move to EDA
 
 nominal_col = []
 ordinal_col = []
