@@ -77,6 +77,7 @@ for n, t in zip(df.dtypes.index, df.dtypes.values):
       print(f"   '{n}': {t},")
    else:
       print(f"   '{n}': np.{t},")
+print("}")
 ```
 
 ### Cardinality Counts
