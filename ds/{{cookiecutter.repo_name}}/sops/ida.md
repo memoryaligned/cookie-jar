@@ -176,7 +176,6 @@ interval_col = []
 ratio_col = []
 ```
 
-
 ### 5a. Univariate exploratory data analysis
 
 Is this data autoregressive?
@@ -232,4 +231,18 @@ import seaborn as sns
 ax = sns.boxplot(x="relatedCol", y="univariateCol", data=df, palette="Set3")
 plt.boxplot(df[features])
 plt.show()
+```
+
+## 6. SQL DDL
+
+```python
+print("CREATE TABLE IF NOT EXISTS vendor_topic_tble (")
+for c in df.columns:
+    sanitized_c = c.lower().replace(" ", "_").replace("#", "no")
+    if df[c].dtype == np.float64:
+       print(f"     {sanitized_c}   NUMERIC,")
+    elif df[c].dtype == object:
+        max_len = df[c].apply(lambda x: len(x)).max()
+        print(f"    {sanitized_c}    VARCHAR({max_len}),")
+print(");")
 ```
