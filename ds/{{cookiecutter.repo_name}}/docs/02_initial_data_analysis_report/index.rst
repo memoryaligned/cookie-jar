@@ -10,6 +10,7 @@ Initial Data Analysis Report
    :maxdepth: 2
    :caption: Contents:
 
+   introduction
    candidate_keys
    nominal_variables
    ordinal_variables

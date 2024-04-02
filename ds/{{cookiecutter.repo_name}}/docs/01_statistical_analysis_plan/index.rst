@@ -59,6 +59,7 @@ Jupyter Lab Template
 .. code-block::
 
    # <VENDOR> <DATA> Initial Data Analysis
+   import re
    import pandas as pd
    import matplotlib.pyplot as plt
    import numpy as np
@@ -69,6 +70,15 @@ Jupyter Lab Template
    DATADIR = "../data/raw"
    INFILE = DATADIR + "/" + "data.csv"
 
+   re_space = re.compile("[ ]+")
+   def sanitize_column(colname: str) -> str:
+      return (
+         re_space.sub("_", colname)
+         .replace("#", "no")
+         .replace(".", "_")
+         .lower()
+      )
+
    ## 1. Load Data
 
    def load_vendor_data(csvfile_path: str) -> pd.DataFrame:
@@ -77,6 +87,7 @@ Jupyter Lab Template
          dtype = schema_<VENDOR>_<DATA>_v1,
          converters = { "col1": convert_currency }
       )
+      df.columns = [sanitize_column(c) for c in df.columns]
       return df
 
    df = load_vendor_data(INFILE)
