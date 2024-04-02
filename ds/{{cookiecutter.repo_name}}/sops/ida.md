@@ -1,5 +1,34 @@
 # Intial Data Analysis/Exploratory Data Analysis
 
+## Notebook structure
+
+1. Load Data
+2. Attribute Cardinality
+3. Classify columns into NOIR
+4. SQL DDL
+5. Visualize Nominal Data
+
+```python
+def hbar_category(category: str, save_path: str) -> None:
+   plt.clf()
+   fig = plg.gcf()
+   fig.set_size_inches(8,4)
+   cat_df = df[category].value_counts().sort_values().reset_index()[:20]
+   plt.barh(cat_df[category], cat_df["count"])
+   plt.title(f"attribute: {category}\nTop20")
+   plt.savefig(save_path)
+
+for c in nominal_col:
+   sanitize_c = c.lower().replace(" ", "_").replace("#", "no")
+   hbar_category(c, f"../reports/figures/{sanitize_c}_hbar.png")
+```
+
+NOTE: to include the image in your Sphinx report:
+
+```
+.. image:: ../../reports/figures/c_hbar.png
+```
+
 ## 1. Metadata Setup
 
 Know what your numbers represent comprising of the characteristics of the data
