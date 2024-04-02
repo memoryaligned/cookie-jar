@@ -1,8 +1,12 @@
 Ordinal Variables
 ******************
 
+Ordinal Variable Observations:
+
+TBR
+
 .. list-table:: Ordinal Variables
-   :widths 60 45 100
+   :widths: 60 45 100
    :header-rows: 1
 
    * - Attribute

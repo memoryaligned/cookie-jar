@@ -1,8 +1,12 @@
 Interval Variables
 ******************
 
+Interval Variable Observations:
+
+TBR
+
 .. list-table:: Interval Variables
-   :widths 60 45 100
+   :widths: 60 45 100
    :header-rows: 1
 
    * - Attribute

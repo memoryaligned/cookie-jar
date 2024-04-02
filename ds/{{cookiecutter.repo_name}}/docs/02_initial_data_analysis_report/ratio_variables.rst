@@ -1,8 +1,12 @@
 Ratio Variables
 ***************
 
+Ratio Variable Observations:
+
+TBR
+
 .. list-table:: Ratio Variables
-   :widths 60 45 100
+   :widths: 60 45 100
    :header-rows: 1
 
    * - Attribute
