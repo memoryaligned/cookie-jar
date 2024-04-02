@@ -53,6 +53,62 @@ into NOIR (nominal, ordinal, interval and ratio) for further visualization and
 study.  Regression is used to identify orthogonal features.  Groups are mined,
 labeled and explored through pivot tables, group bys and analytics.
 
+Jupyter Lab Template
+********************
+
+.. code-block::
+
+   # <VENDOR> <DATA> Initial Data Analysis
+   import pandas as pd
+   import matplotlib.pyplot as plt
+   import numpy as np
+   pd.set_option("display.max_rows", 200)
+   plt.style.use("ggplot")
+
+   import os
+   DATADIR = "../data/raw"
+   INFILE = DATADIR + "/" + "data.csv"
+
+   ## 1. Load Data
+
+   def load_vendor_data(csvfile_path: str) -> pd.DataFrame:
+      df = pd.read_csv(
+         csvfile_path,
+         dtype = schema_<VENDOR>_<DATA>_v1,
+         converters = { "col1": convert_currency }
+      )
+      return df
+
+   df = load_vendor_data(INFILE)
+
+   print("schema_VENDOR_OBJECT_v1 = {")
+   for n, t in zip(df.dtypes.index, df.dtypes.values):
+      if t == "bool" or t == "object":
+         print(f"    '{n}': {t},")
+      else:
+         print(f"    '{n}': np.{t},")
+   print("}")
+
+   ## 2. Attribute Cardinality
+
+   for c in df.columns:
+      if df[c].dtype == "object":
+         print(df[c].fillna("").value_counts().sort_values(ascending=False)[:5])
+      else:
+         print(f"{c}: min: {df[c].min()} median: {df[c].median()} max: {df[c].max()}")
+      print()
+
+   ## 3. Classify columns into NOIR (For further analysis)
+
+   key_col = []
+   null_col = []
+
+   nominal_col = []
+
+   ordinal_col = []
+   interval_col = []
+   ratio_col = []
+
 Indices and tables
 ==================
 
