@@ -44,7 +44,7 @@ Objectives
 Methods
 *******
 Traditional statistical initial data analysis is to be sued to (a) generate
-attribute metadtata by fusing data dictionary insight with scale/distribution
+attribute metadata by fusing data dictionary insight with scale/distribution
 and missing data patterns as well as (b) data clean up to create a derived
 subset sample with the statistical power required for meaningful study.
 
