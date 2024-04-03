@@ -59,6 +59,7 @@ Jupyter Lab Template
 .. code-block::
 
    # <VENDOR> <DATA> Initial Data Analysis
+   import re
    import pandas as pd
    import matmplotlib.pyplot as plt
    import numpy as np
@@ -69,6 +70,15 @@ Jupyter Lab Template
    DATADIR = "../data/raw"
    INFILE = DATADIR + "/" + "data.csv"
 
+   re_space = re.compile("[ ]+")
+   def sanitize_column(colname: str) -> str:
+      return (
+         re_space.sub("_", colname)
+         .replace("#", "no")
+         .replace(".", "_")
+         .lower()
+      )
+
    ## 1. Load Data
 
    def load_vendor_data(csvfile_path: str) -> pd.DataFrame:
@@ -77,6 +87,7 @@ Jupyter Lab Template
          dtype = schema_<VENDOR>_<DATA>_v1,
          converters = { "col1": convert_currency }
       )
+      df.columns = [sanitize_column(c) for c in df.columns]
       return df
 
    df = load_vendor_data(INFILE)
@@ -96,6 +107,8 @@ Jupyter Lab Template
          print(df[c].fillna("").value_counts().sort_values(ascending=False)[:5])
       else:
          print(f"{c}: min: {df[c].min()} median: {df[c].median()} max: {df[c].max()}")
+      print(f"null count: {df[c].isna().sum()} out of {df[c].shape[0]}")
+      print()
       print()
 
    ## 3. Classify columns into NOIR (For further analysis)
