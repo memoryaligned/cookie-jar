@@ -66,18 +66,77 @@ Jupyter Lab Template
    pd.set_option("display.max_rows", 200)
    plt.style.use("ggplot")
 
+   ## Helper functions
+   def date_summary(df: pd.DateTime) -> pd.DataFrame:
+      return pd.DataFrame({
+         "min":    df.select_dtypes(include=np.datetime64).min(),
+         "median": df.select_dtypes(include=np.datetime64).median(),
+         "max":    df.select_dtypes(include=np.datetime64).max(),
+      })
+
+   re_underscores = re.compile("_+")
+   def sanitize_columns(colname: str) -> str:
+      s = (
+         colname.lower()
+         .replace(" ", "_")
+         .replace("#", "no")
+         .replace(".", "_")
+         .replace("%", "pct")
+         .replace("/", "")
+      )
+      return re_underscores.bu("_", s)
+
+   def print_pandas_schema(df: pd.DataFrame, name: str) -> None:
+      print("schema_" + name + "_v1 = {")
+      for n, t in zip(df.dtypes.index, df.dtypes.values):
+         if t == "bool" or t == "object":
+            print(f"    '{n}': {t},")
+         else:
+            print(f"    '{n}': np.{t},")
+      print("}")
+
+   def print_sql_schema(df: pd.DataFrame, name: str) -> None:
+      print(f"CREATE TABLE IF NOT EXISTS {name}_tbl (")
+      for c in df.columns:
+         sanitized_c = sanitize_columns(c)
+         if df[c].dtype == np.float64:
+            print(f"    {sanitized_c}   NUMERIC,")
+         else:
+            max_len = df[c].apply(lambda x: len(str(x)))
+            print(f"    {sanitized_c}   VARCHAR({max_len}),")
+      print(");")
+
+   def attribute_cardinality(df: pd.DataFrame) -> None:
+      for c in df.columns:
+         if df[c].dtype == "object":
+            print(df[c].fillna("").value_counts().sort_values(ascending=False)[:5])
+         else:
+            print(f"{c}: min: {df[c].min()} median: {df[c].median()} max: {df[c].max()}")
+         print(f"null count: {df[c].isna().sum()} out of {df[c].shape[0]}")
+         print()
+         print()
+
+   def hbar_category(df: pd.DataFrame, category: str, save_path:str) -> None:
+      plt.clf()
+      fig = plt.gcf()
+      fig.set_size_inches(8,4)
+      make_df = df[category].value_counts().sort_values().reset_index()[:20]
+      plt.barh(make_df[category], make_df["count"])
+      plt.title(f"attribute: {category}\nTop 20")
+      plt.savefig(save_path)
+
+   def visualize_hbar(df: pd.DataFrame, dirpath: str) -> None:
+      for c in df.columns:
+         sanitize_c = sanitize_columns(c)
+         try:
+            hbar_category(df, c, dirpath + f"/{sanitize_c}_hbar.png")
+         except:
+            pass
+
    import os
    DATADIR = "../data/raw"
    INFILE = DATADIR + "/" + "data.csv"
 
-   re_space = re.compile("[ ]+")
-   def sanitize_column(colname: str) -> str:
-      return (
-         re_space.sub("_", colname)
-         .replace("#", "no")
-         .replace(".", "_")
-         .lower()
-      )
 
    ## 1. Load Data
 
