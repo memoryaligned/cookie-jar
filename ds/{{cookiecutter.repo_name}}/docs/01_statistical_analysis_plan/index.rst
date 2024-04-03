@@ -107,6 +107,8 @@ Jupyter Lab Template
          print(df[c].fillna("").value_counts().sort_values(ascending=False)[:5])
       else:
          print(f"{c}: min: {df[c].min()} median: {df[c].median()} max: {df[c].max()}")
+      print(f"null count: {df[c].isna().sum()} out of {df[c].shape[0]}")
+      print()
       print()
 
    ## 3. Classify columns into NOIR (For further analysis)
