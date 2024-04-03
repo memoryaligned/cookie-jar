@@ -140,46 +140,45 @@ Jupyter Lab Template
 
    ## 1. Load Data
 
-   def load_vendor_data(csvfile_path: str) -> pd.DataFrame:
+   date_cols = []
+
+   def load_vendor_data(csvfile_path: str, schema, date_cols) -> pd.DataFrame:
       df = pd.read_csv(
          csvfile_path,
-         dtype = schema_<VENDOR>_<DATA>_v1,
+         dtype = schema,
+         parse_dates = date_cols,
          converters = { "col1": convert_currency }
       )
       df.columns = [sanitize_column(c) for c in df.columns]
-      return df
+      return df.drop_duplicates()
 
    df = load_vendor_data(INFILE)
 
-   print("schema_VENDOR_OBJECT_v1 = {")
-   for n, t in zip(df.dtypes.index, df.dtypes.values):
-      if t == "bool" or t == "object":
-         print(f"    '{n}': {t},")
-      else:
-         print(f"    '{n}': np.{t},")
-   print("}")
+   ### generate schema
+   print_pandas_schema(df, "VENDOR_DATA")
 
    ## 2. Attribute Cardinality
 
-   for c in df.columns:
-      if df[c].dtype == "object":
-         print(df[c].fillna("").value_counts().sort_values(ascending=False)[:5])
-      else:
-         print(f"{c}: min: {df[c].min()} median: {df[c].median()} max: {df[c].max()}")
-      print(f"null count: {df[c].isna().sum()} out of {df[c].shape[0]}")
-      print()
-      print()
+   null_cols = []
+   print(f"Columns: {df.shape[1]}, Columns with data {df.drop(null_cols, axis=1).shape[1]}")
+   attribute_cardinality(df.drop(null_cols, axis=1))
+
+   ### Visualize data
+   visualize_hbar(df, "../reports/figures")
 
    ## 3. Classify columns into NOIR (For further analysis)
 
    key_col = []
-   null_col = []
 
    nominal_col = []
-
    ordinal_col = []
    interval_col = []
    ratio_col = []
+
+   ## 4. Generate SQL DDL
+
+   print_sql_schema(df, "VENDOR_DATA")
+
 
 Indices and tables
 ==================
