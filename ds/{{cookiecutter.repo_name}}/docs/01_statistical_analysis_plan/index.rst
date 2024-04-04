@@ -175,6 +175,9 @@ Jupyter Lab Template
    interval_col = []
    ratio_col = []
 
+   ### Date Analysis
+   date_summary(df)
+
    ## 4. Generate SQL DDL
 
    print_sql_schema(df, "VENDOR_DATA")
