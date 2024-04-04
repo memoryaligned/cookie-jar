@@ -84,7 +84,7 @@ Jupyter Lab Template
          .replace("%", "pct")
          .replace("/", "")
       )
-      return re_underscores.bu("_", s)
+      return re_underscores.sub("_", s)
 
    def print_pandas_schema(df: pd.DataFrame, name: str) -> None:
       print("schema_" + name + "_v1 = {")
