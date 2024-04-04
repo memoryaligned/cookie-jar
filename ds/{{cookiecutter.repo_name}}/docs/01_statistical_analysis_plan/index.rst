@@ -61,7 +61,7 @@ Jupyter Lab Template
    # <VENDOR> <DATA> Initial Data Analysis
    import re
    import pandas as pd
-   import matmplotlib.pyplot as plt
+   import matplotlib.pyplot as plt
    import numpy as np
    pd.set_option("display.max_rows", 200)
    plt.style.use("ggplot")
