@@ -67,7 +67,7 @@ Jupyter Lab Template
    plt.style.use("ggplot")
 
    ## Helper functions
-   def date_summary(df: pd.DateTime) -> pd.DataFrame:
+   def date_summary(df: pd.DataFrame) -> pd.DataFrame:
       return pd.DataFrame({
          "min":    df.select_dtypes(include=np.datetime64).min(),
          "median": df.select_dtypes(include=np.datetime64).median(),
