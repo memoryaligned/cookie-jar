@@ -25,6 +25,7 @@ make html
 
 ## Table support
 
+```
 .. list-table:: Title
    :widths: 225 25 50
    :header-rows: 1
@@ -35,10 +36,11 @@ make html
    * - row 1, col 1
      - row 1, col 2
      - row 1, col 3
-
+```
 
 ## Add files to the toc
 
+```
 .. toctree:: 
    :maxdepth: 2
    :caption: Contents:
@@ -50,3 +52,12 @@ Title
 =====
 
 Text...
+```
+
+## Image support
+
+```
+.. image:; path/to/image.png
+   :width: 400
+   :alt: Alternative text
+```
