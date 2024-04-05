@@ -56,8 +56,10 @@ Text...
 
 ## Image support
 
+NOTE: you must have a single space before the image directive for this to work.
+
 ```
-.. image:; path/to/image.png
-   :width: 400
-   :alt: Alternative text
+ .. image:; path/to/image.png
+    :width: 400
+    :alt: Alternative text
 ```
