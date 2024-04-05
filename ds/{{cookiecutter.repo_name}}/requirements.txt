@@ -16,3 +16,4 @@ xlrd
 yellowbrick
 sphinx
 sphinx-material
+statsmodels
