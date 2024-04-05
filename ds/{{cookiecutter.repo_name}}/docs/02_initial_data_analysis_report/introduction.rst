@@ -48,6 +48,14 @@ note the nature of the subset of data including:
  Data Cleaning
  *************
 
-Describe the procedure for loading data
+ The data loading procedure is:
 
-Describe what was changed to get the data to load
+  - apply the schema (to prevent type autodetection anomalies)
+  - column names are sanitized:
+     - converted to lower case
+     - replace space with "_"
+     - replace "#" with "no"
+     - replace "%" with "pct"
+     - remove "/"
+     - replace "." with "_"
+  - drop duplicate records
