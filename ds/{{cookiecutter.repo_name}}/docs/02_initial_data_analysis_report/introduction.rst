@@ -45,8 +45,8 @@ Include helpful figures to show the distribution of key data attributes and
 note the nature of the subset of data including:
 
 
- Data Cleaning
- *************
+Data Cleaning
+*************
 
  The data loading procedure is:
 
@@ -56,6 +56,6 @@ note the nature of the subset of data including:
      - replace space with "_"
      - replace "#" with "no"
      - replace "%" with "pct"
-     - remove "/"
      - replace "." with "_"
+     - remove "/"
   - drop duplicate records
