@@ -59,11 +59,11 @@ sync_package_to_repo:
 	twine --repository-url $(PYTHON_REPO) upload dist/* 
 
 ## Serve the documentation locally
-serve_doc: requirements
-	$(PYTHON) -m mkdocs serve
+serve_doc: requirements docs/_build/html
+	(cd docs/_build/html; $(PYTHON) -m http.server -a localhost)
 
-build_doc: requirements
-	$(PYTHON) -m mkdocs build
+docs/_build/html:
+	(cd docs; make html)
 
 alembic.ini:
 	$(PYTHON) -m alembic init -t async alembic
