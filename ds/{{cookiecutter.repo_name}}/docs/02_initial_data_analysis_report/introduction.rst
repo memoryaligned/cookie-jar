@@ -28,18 +28,24 @@ The <VENDOR> <DATA> data includs:
    :widths: 30 10 10 15
    :header-rows: 1
 
-    * - Key
+    * - Primary Key, Foreign Key or Lookup Code
       - primary
       - foriegn
+      - null count
+      - unique count
       - definition?
     * - id
       - yes
       -
+      - 0
+      - 0
       - N/A
     * - fk
       -
       - yes
       - UNKNOWN
+      - 0
+      - 0
 
 Include helpful figures to show the distribution of key data attributes and
 note the nature of the subset of data including:
