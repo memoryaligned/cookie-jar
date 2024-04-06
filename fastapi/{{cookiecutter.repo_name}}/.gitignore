@@ -1,4 +1,5 @@
 venv/
+.null-ls*
 *.egg-info/
 .env
 *.pyc
