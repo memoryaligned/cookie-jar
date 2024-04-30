@@ -1,6 +1,6 @@
 venv/
 
-.null-ls
+.null-ls*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
