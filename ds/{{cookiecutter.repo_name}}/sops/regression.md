@@ -1,6 +1,6 @@
 # Regression SOP
 
-## Multi-linear Regression
+## (OLS) Multi-linear Regression
 
 ```python
 import pandas as pd
@@ -16,4 +16,7 @@ results = sm.OLS(y, x).fit()
 results.summary()
 ```
 
-NOTE: the R-Squared vs Adj. R-Squared
+NOTE: the R-Squared vs Adj. R-Squared and watch for p-values less than 0.05
+(significant for the model).
+
+Adding independent variables "increases explanatory power of the model"
