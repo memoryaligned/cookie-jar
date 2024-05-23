@@ -5,9 +5,9 @@ pushd %~dp0
 REM Command file to provide compatability for Windows systems
 
 if "%1" == "setup" (
-   python3 -m venv venv
-   venv/bin/python3 -m pip install -U pip setuptools wheel
-   venv/bin/python3 -m pip install -r requirements.txt
+   python -m venv venv
+   venv\Scripts\python -m pip install -U pip setuptools wheel
+   venv\Scripts\python -m pip install -U -r requirements.txt
    goto end
 )
 
@@ -16,7 +16,7 @@ if "%1" == "clean" (
 )
 
 if "%1" == "lint" (
-   venv/bin/python3 -m flake8 scripts
+   venv\Scripts\python -m flake8 scripts
 )
 
 if "%1" == "help" (
