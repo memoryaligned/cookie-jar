@@ -20,6 +20,22 @@ if "%1" == "lint" (
    goto end
 )
 
+if %! == "sync_data_to_s3" (
+  echo not implemented
+  goto end
+)
+
+if %! == "serve_doc" (
+  (cd docs\_build\html; ..\..\..\venv\Scripts\python -m http.server -b localhost)
+  goto end
+)
+
+if %! == "dist" (
+  mkdir dist
+  cd build && zip ..\dist\docs.zip docs
+  goto end
+)
+
 if "%1" == "help" (
 :help
    ECHO setup            - Install Python Dependencies and set up the environment
