@@ -17,6 +17,7 @@ if "%1" == "clean" (
 
 if "%1" == "lint" (
    venv\Scripts\python -m flake8 scripts
+   goto end
 )
 
 if "%1" == "help" (
