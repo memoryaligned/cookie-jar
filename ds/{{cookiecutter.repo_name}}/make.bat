@@ -21,12 +21,12 @@ if "%1" == "lint" (
 
 if "%1" == "help" (
 :help
-   ECHO "setup            - Install Python Dependencies and set up the environment"
-   ECHO "clean            - Clean the project temporary files"
-   ECHO "lint             - Run the linter against the scripts"
-   ECHO "sync_data_to_s3  - Update Data to S3"
-   ECHO "serve_doc        - Serve the documentation locally"
-   ECHO "dist             - Build the project deliverables"
+   ECHO setup            - Install Python Dependencies and set up the environment
+   ECHO clean            - Clean the project temporary files
+   ECHO lint             - Run the linter against the scripts
+   ECHO sync_data_to_s3  - Update Data to S3
+   ECHO serve_doc        - Serve the documentation locally
+   ECHO dist             - Build the project deliverables
 )
 
 :end
