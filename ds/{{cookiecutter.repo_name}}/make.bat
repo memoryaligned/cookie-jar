@@ -36,8 +36,11 @@ if "%1" == "sync_data_to_s3" (
    goto end
 )
 
-if "%1" == "serve_doc" (
-   cd docs\01_statistical_analysis_plan\_build
+if "%1" == "serve_plan" (
+   cd docs\01_statistical_analysis_plan
+   set SPHINXBUILD=..\..\venv\Scripts\sphinx-build
+   make.bat html
+   cd _build
    ..\..\..\venv\Scripts\python -m http.server -b localhost
    cd ..\..\..\
    goto end
