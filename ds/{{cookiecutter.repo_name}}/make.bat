@@ -42,7 +42,7 @@ if "%1" == "serve_plan" (
    make.bat html
    cd _build\html
    ..\..\..\..\venv\Scripts\python -m http.server -b 127.0.0.1
-   cd ..\..\..\
+   cd ..\..\..\..\
    goto end
 )
 
@@ -52,7 +52,7 @@ if "%1" == "serve_ida" (
    make.bat html
    cd _build\html
    ..\..\..\..\venv\Scripts\python -m http.server -b 127.0.0.1
-   cd ..\..\..\
+   cd ..\..\..\..\
    goto end
 )
 
@@ -62,7 +62,7 @@ if "%1" == "serve_eda" (
    make.bat html
    cd _build\html
    ..\..\..\..\venv\Scripts\python -m http.server -b 127.0.0.1
-   cd ..\..\..\
+   cd ..\..\..\..\
    goto end
 )
 
