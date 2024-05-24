@@ -46,6 +46,26 @@ if "%1" == "serve_plan" (
    goto end
 )
 
+if "%1" == "serve_ida" (
+   cd docs\02_initial_data_analysis_report
+   set SPHINXBUILD=..\..\venv\Scripts\sphinx-build
+   make.bat html
+   cd _build
+   ..\..\..\venv\Scripts\python -m http.server -b 127.0.0.1
+   cd ..\..\..\
+   goto end
+)
+
+if "%1" == "serve_eda" (
+   cd docs\03_exploratory_data_analysis_report
+   set SPHINXBUILD=..\..\venv\Scripts\sphinx-build
+   make.bat html
+   cd _build
+   ..\..\..\venv\Scripts\python -m http.server -b 127.0.0.1
+   cd ..\..\..\
+   goto end
+)
+
 if "%1" == "dist" (
    mkdir dist
    mkdir build
