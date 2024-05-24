@@ -41,7 +41,7 @@ if "%1" == "serve_plan" (
    set SPHINXBUILD=..\..\venv\Scripts\sphinx-build
    make.bat html
    cd _build
-   ..\..\..\venv\Scripts\python -m http.server -b localhost
+   ..\..\..\venv\Scripts\python -m http.server -b 127.0.0.1
    cd ..\..\..\
    goto end
 )
@@ -74,7 +74,9 @@ if "%1" == "help" (
    ECHO clean            - Clean the project temporary files
    ECHO lint             - Run the linter against the scripts
    ECHO sync_data_to_s3  - Update Data to S3
-   ECHO serve_doc        - Serve the documentation locally
+   ECHO serve_plan       - Serve the statistical analysis plan locally
+   ECHO serve_ida        - Serve the initial data analysis report locally
+   ECHO serve_eda        - Serve the exploratory data analysis report locally
    ECHO dist             - Build the project deliverables
 )
 
