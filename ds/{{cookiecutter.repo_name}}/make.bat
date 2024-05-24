@@ -52,10 +52,12 @@ if "%1" == "dist" (
    cd ..\..\..\
    cd docs\02_initial_data_analysis_report
    make.bat html
+   cd _build
    zip ..\..\..\dist\02_initial_data_analysis_report.zip html
    cd ..\..\..\
    cd docs\03_exploratory_data_analysis_report
    make.bat html
+   cd _build
    zip ..\..\..\dist\03_exploratory_data_analysis_report.zip html
    cd ..\..\..\
    goto end
