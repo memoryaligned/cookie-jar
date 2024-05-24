@@ -37,7 +37,9 @@ if "%1" == "sync_data_to_s3" (
 )
 
 if "%1" == "serve_doc" (
-   (cd docs\_build\html; ..\..\..\venv\Scripts\python -m http.server -b localhost)
+   cd docs\01_statistical_analysis_plan\_build
+   ..\..\..\venv\Scripts\python -m http.server -b localhost
+   cd ..\..\..\
    goto end
 )
 
