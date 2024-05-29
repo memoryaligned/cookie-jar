@@ -22,3 +22,12 @@ schema = StructType(
    ]
 )
 ```
+
+## Create a table
+
+```python
+df.createOrReplaceTempView("people")
+
+sdf = spark.sql("SELECT * FROM people")
+sdf.show()
+```
