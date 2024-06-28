@@ -176,6 +176,15 @@ plt.figure(figsize=(10,6))
 sns.boxplot(data=df, x="feature", y="target")
 ```
 
+- for geospatial visualize location given the target to figure out how to
+  create a new feature to capture the location.
+
+```python
+plt.figure(figsize=(10,6))
+upper_half_filter = df["price"] > df["price"].median()
+sns.scatterplot(data=df[upper_half_filter], x="long", y="lat", hue="price")
+```
+
 ## 4. Normalizing/standardizing  and cleaning data
 
 NOTE: Chapter 7: Wrangling with Python
