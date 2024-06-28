@@ -98,6 +98,13 @@ for c in df.columns:
 - upscale/downscale data
 - date/datetime timezone identification
 
+```python
+df["date"] = pd.to_datetime(df["date"])
+df["year"] = df.apply(lambda r: r["date"].year, axis=1)
+df["month"] = df.apply(lambda r: r["date"].month, axis=1)
+df["day"] = df.apply(lambda r: r["date"].day, axis=1)
+```
+
 ### Null/NA
 
 ```python
