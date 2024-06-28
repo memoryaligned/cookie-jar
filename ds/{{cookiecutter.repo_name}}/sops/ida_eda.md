@@ -10,6 +10,7 @@ TODO: SOP for standard visualization techinques required for:
 - line plots
 - horizontal bar plots
 - histograms/kernel density plots (skew, kurtosis)
+- box and whisker plots for data distribution
 
 TODO: SOP for anomaly detection
 
@@ -26,6 +27,9 @@ Goals:
 - identify the "target" variable (the one we want to predict)
 - identify the relationships between the target variable and other variables
 - identify features that can be extracted from related variables
+- examine the distribution of the feature variable to the target variable via
+  box and whisker plot.
+
 
 Tools to use:
 
@@ -163,6 +167,13 @@ df.corr()['Target'][:].sort_values(ascending=False)
 ```python
 # visualize correlation between a column and the target
 pd.plotting.scatter_matrix(df[feature_ratio], alpha=0.2, diagnal='hist', figsize(12,18))
+```
+
+- examine the feature data distribution relative to the target
+
+```python
+plt.figure(figsize=(10,6))
+sns.boxplot(data=df, x="feature", y="target")
 ```
 
 ## 4. Normalizing/standardizing  and cleaning data
