@@ -9,6 +9,13 @@
 5. Visualize Nominal Data
 
 ```python
+df = pd.read_csv("..")
+
+# look for missing data by column
+df.isnull().sum()
+```
+
+```python
 def hbar_category(category: str, save_path: str) -> None:
    plt.clf()
    fig = plg.gcf()
