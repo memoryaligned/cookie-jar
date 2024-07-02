@@ -15,7 +15,10 @@ df = pd.read_csv("data.csv")
 # look for correlation/relationships
 sns.pairplot(df)
 
-# look a the data distribution
+# look at pearson correlation coefficient
+df.corr()["target"].sort_values(ascending=False).plot(kind="barh")
+
+# look a the data distribution for a feature
 plt.figure(figsize(10,6))
 sns.boxplot(data=df, x="independent", y="price")
 
