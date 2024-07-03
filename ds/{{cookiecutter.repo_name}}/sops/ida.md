@@ -235,6 +235,12 @@ plt.show()
 TODO: Autoregression
 ```
 
+Is this data linearly correlated (via pearson correlation coefficient?)
+
+```python
+sns.heatmap(df.select_dtypes(include=["float64"]).corr())
+```
+
 Distribution of this feature:
 
 - mean, median, mode
