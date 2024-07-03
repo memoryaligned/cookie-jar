@@ -199,7 +199,9 @@ df.col1.value_counts()
 Visualize the frequency count by a category
 
 ```python
-sns.countplot(data=df, x="col_2_count", hue="col_2_groupby")
+# NOTE: if you don't want a group by then set hue to the x column
+#
+sns.countplot(data=df, x="col_2_count", hue="col_2_groupby", palette="viridis")
 ```
 
 Visualize the data distribution
