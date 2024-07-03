@@ -196,6 +196,18 @@ df.apply( pd.value_counts )
 df.col1.value_counts()
 ```
 
+Visualize the frequency count by a category
+
+```python
+sns.countplot(data=df, x="col_2_count", hue="col_2_groupby")
+```
+
+Visualize the data distribution
+
+```python
+sns.boxplot(data=df, x="cat_col", y="qty_col", hue="cat_col")
+```
+
 ## 2. Classify columns into NOIR for further analysis
 
 We are done when we have classified data into statistical
