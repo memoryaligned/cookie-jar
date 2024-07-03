@@ -80,6 +80,7 @@ NOTE: Chapter 8 Data Wrangling with Python
 - TODO: testing data cleanup
 - Frequency counts (see above)
 - Descriptive statistics (mean, std, median, normality histogram skewness/kurtosis, freq)
+
 ## 3. Data Screening
 
 - sample size
@@ -180,7 +181,7 @@ for c in df.columns:
 ### Null/NA
 
 ```python
-df.isnull().any()
+df.isnull().sum()
 ```
 
 ### Value Counts
@@ -201,6 +202,8 @@ We are done when we have classified data into statistical
 types, nominal, ordinal, interval and ratio.
 
 ```python
+df.select_dtypes(include=["float64"])
+
 keyh_col = []
 null_col = []
 #features_col = []  move to EDA
