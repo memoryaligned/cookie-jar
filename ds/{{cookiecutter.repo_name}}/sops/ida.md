@@ -238,7 +238,7 @@ TODO: Autoregression
 Is this data linearly correlated (via pearson correlation coefficient?)
 
 ```python
-sns.heatmap(df.select_dtypes(include=["float64"]).corr())
+sns.heatmap(df.select_dtypes(include=["float64"]).corr(), annot=True, cmap="viridis")
 ```
 
 Distribution of this feature:
