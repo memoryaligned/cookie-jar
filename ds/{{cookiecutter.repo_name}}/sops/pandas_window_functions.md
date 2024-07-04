@@ -2,6 +2,7 @@
 
 <!-- toc -->
 
+- [Every second row last column](#every-second-row-last-column)
 - [Lag and Lead](#lag-and-lead)
 - [Moving Averages](#moving-averages)
 - [Rolling Averages](#rolling-averages)
@@ -9,6 +10,14 @@
 - [Expanding Aggregations](#expanding-aggregations)
 
 <!-- tocstop -->
+
+## Every second row last column
+
+This sets every second row to NaN:
+
+```python
+df.iloc[::2, -1:] = np.NaN
+```
 
 ## Lag and Lead
 
