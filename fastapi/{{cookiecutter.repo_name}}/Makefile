@@ -46,7 +46,7 @@ requirements: venv
 clean:
 	@find . -type f -name "*.py[co]" -delete
 	@find . -type d -name "__pycache__" -delete
-	@-find . -type d -name "*egg-info" -exec rm -rf {} \;
+	@-find . -type d -name "*egg-info" -exec rm -rf {} \; 2> /dev/null
 	@rm -rf ./build ./dist
 
 ## Run the linter against the scripts
