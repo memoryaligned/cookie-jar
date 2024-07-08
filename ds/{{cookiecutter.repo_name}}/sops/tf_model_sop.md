@@ -1,5 +1,65 @@
 # Tensorflow Modeling SOP
 
+NOTE: for deployment we want to train on everything.  It would be helpful to
+create the model in a function so it would be easy to re-create the model
+for training purposes.  The function creates, compiles and returns the model.
+
+## Saving/Loading the Model
+
+The Keras model consists of the following components (v3 format):
+
+- the architecture (or configuration) of layers and how they are connected
+- the set of weights values ("state" of the model)
+- an optimizer (defined by compiling the model)
+- a set of losses and metrics (defined by compiling the model)
+
+```python
+
+# display the model's architecture
+model.summmary()
+
+model.save("final_model.keras")
+```
+
+Loading the model:
+
+```python
+model = keras.modes.load_model("path/final_mode.keras")
+```
+
+## Checkpoints
+
+Load the weights from the checkpoint this way:
+
+```python
+model = create_model()
+model.load_weights(checkpoint_path)
+loss, accuracy = model.evaluate(test_images, test_labels, verbose=2)
+print("Untrained model, accuracy; {:5.2f}%".format(100 * accuracy))
+```
+
+Save the weights as we train this way:
+
+```python
+checkpoint_path = "training_1/cp.ckpt"
+checkpoint_dir = os.path.dirname(checkpoint_path)
+
+# callback to save the model's weights (works with models w/same architecture)
+cp_callback = tf.keras.callbacks.ModelCheckpoint(
+      filepath=checkpoint_path,
+      save_weights_only=True,
+      verbose=1,
+   )
+
+model.fit(
+      train_images,
+      train_labels,
+      epochs=10,
+      validation_data=(test_images, test_labels),
+      callbacks=[cp_callback],
+   )
+```
+
 ## Feature engineering
 
 ```python
@@ -169,6 +229,15 @@ pd.DataFrame(model.history.history).plot()
 
 # softmax: binary classification evaluation
 predictions = model.predict(X_test)
+
+# get metrics on loss and accuracy
+metrics = pd.DataFrame(model.history.history)
+metrics[["loss", "val_loss"]].plot()
+metrics[["accuracy", "val_accuracy"]].plot()
+
+# get final loss and accuracy
+loss, accuracy = model.evaluate(scaled_X_test, y_test, verbose=0)
+print("Untrained model, accuracy: {:5.2f}%".format(100 * accuracy))
 
 print(mean_squared_error(y_test, predictions))
 print(mean_absolute_error(y_test, predictions))
