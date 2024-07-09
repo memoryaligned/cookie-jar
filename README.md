@@ -7,6 +7,7 @@ and full software lifecycle support (automated build and code quality).
 
 - [Python](#python)
   * [ds](#ds)
+  * [api_regression](#api_regression)
   * [py](#py)
   * [fastapi](#fastapi)
   * [pymq](#pymq)
@@ -26,6 +27,14 @@ work with reasonable defaults.
 
 ```bash
 cookiecutter ds
+```
+
+### api_regression
+
+Host a tensorflow regression model and service inference requests.
+
+```bash
+cookiecutter api_regression
 ```
 
 ### py
