@@ -1,16 +1,24 @@
 import argparse
 import sys
 
-from {{cookiecutter.repo_name}}.services.database import db_init
+from {{cookiecutter.repo_name}}.command.inference import submit_inference
 
 
 def _get_argparse(args):
     parser = argparse.ArgumentParser(prog="{{cookiecutter.repo_name}}")
-    subparsers = parser.add_subparsers(help="available subcommands")
+    subparsers = parser.add_subparsers(
+            dest="subcommand",
+            help="available subcommands",
+        )
 
     # first sub-command
-    db_parser = subparsers.add_parser("db", help="DB commands")
-    db_parser.add_argument("-i", "--init", action="store_true")
+    db_parser = subparsers.add_parser(
+            "inference",
+            help="submit an inference request",
+        )
+    db_parser.add_argument("-s", "--server", action="store")
+    db_parser.add_argument("-p", "--port", action="store")
+    db_parser.add_argument("-j", "--json", action="store")
 
     args = parser.parse_args(args)
     return args
@@ -19,5 +27,5 @@ def _get_argparse(args):
 def main():
     args = _get_argparse(sys.argv[1:])
 
-    if "init" in args:
-        db_init()
+    if "inference" == args.subcommand:
+        submit_inference(args)
