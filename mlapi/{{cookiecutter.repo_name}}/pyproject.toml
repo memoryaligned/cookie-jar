@@ -1,0 +1,15 @@
+[build-system]
+requires = [
+  "setuptools",
+  "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.coverage.report]
+exclude_also = [
+  "if __name__ == \"__main__\":",
+  "from ",
+  "import ",
+  "__all__",
+  "except ",
+]
