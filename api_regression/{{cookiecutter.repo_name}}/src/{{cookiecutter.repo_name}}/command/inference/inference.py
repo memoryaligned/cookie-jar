@@ -15,7 +15,7 @@ def submit_inference(args):
     if args.json:
         inference_request = json.loads(args.json)
 
-    url = f"http://{host}:{port}/ai/model/inference"
+    url = f"http://{host}:{port}/ai/{{cookiecutter.model_name}}/inference"
 
     resp = requests.post(
             url,
