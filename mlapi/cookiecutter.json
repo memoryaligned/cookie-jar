@@ -1,0 +1,10 @@
+{
+  "project_name": "ml_api",
+  "model_url": "file:///var/ml/my_model.keras",
+  "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+  "github_user": "your github user or organization name",
+  "author_name": "Your name (or organization/company/team)",
+  "description": "A short description of the project",
+  "license": "MIT",
+  "python_repo": "url to your python repo"
+}
