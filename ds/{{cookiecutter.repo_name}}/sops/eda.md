@@ -30,7 +30,6 @@ Goals:
 - examine the distribution of the feature variable to the target variable via
   box and whisker plot.
 
-
 Tools to use:
 
 - pandas
