@@ -14,6 +14,28 @@ TODO: SOP for standard visualization techinques required for:
 
 TODO: SOP for anomaly detection
 
+<!-- toc -->
+
+- [Introduction](#introduction)
+- [1. Data Load and Schema](#1-data-load-and-schema)
+  * [Cardinality Counts](#cardinality-counts)
+  * [Date Handling](#date-handling)
+  * [Null/NA](#nullna)
+  * [Value Counts](#value-counts)
+- [2. Classify columns into NOIR for further analysis](#2-classify-columns-into-noir-for-further-analysis)
+- [3. Identify features for Transformation](#3-identify--features-for-transformation)
+- [4. Normalizing/standardizing and cleaning data](#4-normalizingstandardizing--and-cleaning-data)
+- [5. Exploratory Data Analysis (John Tukey's Approach)](#5-exploratory-data-analysis-john-tukeys-approach)
+  * [5a. Univariate exploratory data analysis](#5a-univariate-exploratory-data-analysis)
+  * [5b. Bivariate exploratory data analysis](#5b-bivariate-exploratory-data-analysis)
+  * [5c. Baysian Data Analysis](#5c-baysian-data-analysis)
+  * [5d. Analytics](#5d-analytics)
+- [6. Modeling and autocorrelation](#6-modeling-and-autocorrelation)
+
+<!-- tocstop -->
+
+<!-- endtoc -->
+
 ## Introduction
 
 We are done when:
@@ -105,6 +127,11 @@ df["day"] = df.apply(lambda r: r["date"].day, axis=1)
 ```
 
 ### Null/NA
+
+NOTE: check for correlation between the column w/nulls to try to thoughtfully
+predict the missing values.  If all else fails consider imputing around a
+measure of central tendancy or drop the records if you believe you would create
+outliers (noise).
 
 ```python
 df.isnull().any()
