@@ -1,7 +1,6 @@
 {
-  "model_name": "regression",
-  "project_name": "api_{{cookiecutter.model_name}}",
   "model_url": "file:///tmp/model.keras",
+  "project_name": "dataproductname",
   "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
   "github_user": "your github user or organization name",
   "author_name": "Your name (or organization/company/team)",
