@@ -135,6 +135,18 @@ outliers (noise).
 
 ```python
 df.isnull().any()
+
+# create lookup dataframe with your correlated means
+col_mean_df = (df[["col", "throwaway"]]
+      .groupby("col")
+      .mean()
+      .reset_index()
+      .rename(cols={"throwaway": "mean"})
+   )
+
+# impute the missing values
+df["target_col"] = df.apply(lambda x: col_mean_df[x["col"]]["mean"] if x["target"] == np.nan else: x["target"], axis=1)
+
 ```
 
 ### Value Counts
