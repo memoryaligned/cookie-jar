@@ -1,5 +1,11 @@
 # Tensorflow Modeling SOP
 
+Install w/CUDA support:
+
+```bash
+pip install -U tensorflow[and-cuda]
+```
+
 NOTE: for deployment we want to train on everything.  It would be helpful to
 create the model in a function so it would be easy to re-create the model
 for training purposes.  The function creates, compiles and returns the model.
