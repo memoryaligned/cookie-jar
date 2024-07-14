@@ -48,7 +48,7 @@ async def post_predict_regression(req: InferenceRequest):
 #
 #@router.post("/inference")
 #async def post_predict_category(req: InferenceRequest):
-#    prediction = model.predict(x = np.array(req.input))
+#    prediction = model.predict_classes(x = np.array(req.input))
 #    now: str = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 #    return {
 #            "prediction": prediction[0][0],
