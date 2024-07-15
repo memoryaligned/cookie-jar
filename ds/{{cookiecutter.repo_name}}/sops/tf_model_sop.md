@@ -104,7 +104,7 @@ X_train = scaler.transform(X_train)
 X_test = scaler.transform(X_test)
 ```
 
-## Binary Classification 
+## Binary Classification
 
 - sigmoid and binary_crossentropy
 
@@ -147,7 +147,7 @@ pd.DataFrame(model.history.history).plot()
 predictions = (model.predict(X_test) > 0.5).astype("int32")
 ```
 
-## Multiclass Classification 
+## Multiclass Classification
 
 - softmax and categorical_crossentropy
 
@@ -189,8 +189,9 @@ pd.DataFrame(model.history.history).plot()
 
 # softmax: binary classification evaluation
 predictions = np.argmax(model.predict(X_test), axis=1)
-print(classification_report(y_test, predictions))
-print(confusion_matrix(y_test, predictions))
+print(classification_report(np.argmax(y_test, axis=1), predictions))
+print(confusion_matrix(np.argmax(y_test, axis=1), predictions))
+print(model.evaluate(x_test, y_test, verbose=0))
 ```
 
 ## Regression
