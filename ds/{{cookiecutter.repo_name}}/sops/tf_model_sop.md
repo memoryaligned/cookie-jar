@@ -22,7 +22,7 @@ The Keras model consists of the following components (v3 format):
 ```python
 
 # display the model's architecture
-model.summmary()
+print(model.summmary())
 
 model.save("final_model.keras")
 ```
