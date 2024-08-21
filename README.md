@@ -1,7 +1,8 @@
 # Cookie Cutter projects
 
 My monorepo of [cookiecutter](https://github.com/cookiecutter/cookiecutter) templated projects that contain reasonable defaults
-and full software lifecycle support (automated build and code quality).
+and full software lifecycle support (automated build and code quality).  I will break out each project separately in the near
+future.
 
 <!-- toc -->
 
