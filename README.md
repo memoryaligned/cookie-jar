@@ -1,6 +1,6 @@
 # Cookie Cutter projects
 
-Monorepo of [cookiecutter](https://github.com/cookiecutter/cookiecutter) templated projects that contain reasonable defaults
+My monorepo of [cookiecutter](https://github.com/cookiecutter/cookiecutter) templated projects that contain reasonable defaults
 and full software lifecycle support (automated build and code quality).
 
 <!-- toc -->
