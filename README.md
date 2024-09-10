@@ -14,8 +14,6 @@ separately in the near future.
   * [fastapi](#fastapi)
   * [pymq](#pymq)
   * [pylambda](#pylambda)
-- [Go Lang](#go-lang)
-  * [go](#go)
 
 <!-- tocstop -->
 
@@ -85,10 +83,6 @@ TODO: implement this
 ```bash
 cookiecutter pylambda
 ```
-
-## Go Lang
-
-### go
 
 Starter project intended for use building go command-line utilties
 
