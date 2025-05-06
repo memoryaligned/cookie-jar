@@ -5,7 +5,7 @@ pushd %~dp0
 REM Command file to provide compatability for Windows systems
 
 if "%1" == "setup" (
-   python -m venv venv
+   python -m venv --upgrade-deps venv
    venv\Scripts\python -m pip install -U pip setuptools wheel
    venv\Scripts\python -m pip install -U -r requirements.txt
    goto end
