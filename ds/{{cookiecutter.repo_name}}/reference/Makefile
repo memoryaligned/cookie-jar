@@ -8,7 +8,8 @@ PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 AWS_BUCKET = {{ cookiecutter.s3_bucket }}
 AWS_PROFILE = {{ cookiecutter.aws_profile }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
-PYTHON = ./venv/bin/python3 
+PYTHON = ../venv/bin/python3 
+MKDOCS = ../venv/bin/mkdocs 
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -20,11 +21,11 @@ clean:
 
 ## Serve the documentation locally
 serve:
-	mkdocs serve
+	$(MKDOCS) serve
 
 ## Build the documentation
 build: requirements
-	mkdocs build
+	$(MKDOCS) build
 
 #################################################################################
 # Self Documenting Commands                                                     #
