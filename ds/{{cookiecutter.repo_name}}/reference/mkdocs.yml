@@ -1,1 +1,5 @@
-site_name: My Docs
+site_name: {{cookiecutter.project_name}}
+nav:
+  - Home: index.md
+theme: readthedocs
+site_dir: ../build/docs_reference
