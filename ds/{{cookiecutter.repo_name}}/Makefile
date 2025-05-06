@@ -23,7 +23,7 @@ setup: requirements
 	@echo "###################################################################"
 
 venv:
-	python3 -m venv venv
+	python3 -m venv --upgrade-deps venv
 
 requirements: venv
 	$(PYTHON) -m pip install -U pip setuptools wheel
