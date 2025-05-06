@@ -1,7 +1,0 @@
-site_name: {{cookiecutter.project_name}}
-site_url: http://example.;com
-nav:
-  - Home: index.md
-  - About: about.md
-theme: readthedocs
-site_dir: build/docs
